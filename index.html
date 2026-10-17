@@ -125,7 +125,6 @@
     /* ---- problem: three sources ---- */
     .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .three .c { background: var(--card); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; }
-    .three .c img { width: 100%; aspect-ratio: 5 / 3; object-fit: cover; }
     .three .c .body { padding: 16px 18px 18px; }
     .three h3 { font-size: 1.02rem; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
     .three h3 .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
@@ -205,12 +204,187 @@
     footer { padding: 48px 0 40px; font-size: 13.5px; color: var(--light); text-align: center; }
     footer a { color: var(--mute); }
 
+
+    /* ---- hero visual (video slot) ---- */
+    .hero-visual { margin-top: 18px; position: relative; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); background: var(--dark); }
+    .hero-visual img, .hero-visual video { width: 100%; display: block; max-height: 540px; object-fit: cover; object-position: center 40%; }
+    .hero-visual .hv-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 22px 16px; color: #fff; font-size: 14px; line-height: 1.5; background: linear-gradient(to top, rgba(16,20,28,0.78), rgba(16,20,28,0)); }
+    .hero-visual .hv-cap b { font-family: var(--display); font-weight: 700; }
+    .hero-visual .hv-legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 6px; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.03em; opacity: 0.9; }
+    .hero-visual .hv-legend span::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: 0; background: var(--c); }
+
+    /* ---- HTML explanation panel (AR) ---- */
+    .xp { display: grid; grid-template-columns: minmax(0, 1fr) 232px; gap: 18px; padding: 18px 18px 16px; align-items: start; }
+    .xp-left { min-width: 0; }
+    .xp-meta { font-family: var(--mono); font-size: 11.5px; color: var(--light); letter-spacing: 0.03em; margin-bottom: 6px; }
+    .xp-pred { font-family: var(--display); font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.4; margin-bottom: 10px; }
+    .xp-pred .q { font-weight: 500; font-style: italic; color: var(--body); }
+    .xp-pred .ok { width: 17px; height: 17px; border-radius: 50%; background: #22A447; color: #fff; display: inline-grid; place-items: center; font-size: 11px; font-weight: 800; vertical-align: -2px; margin-left: 6px; }
+    .xp-video { background: #0E1218; border-radius: 12px; overflow: hidden; display: grid; place-items: center; }
+    .xp-video img { display: block; max-height: 340px; width: auto; max-width: 100%; }
+    .xp-foot { font-size: 13px; color: var(--mute); margin-top: 10px; }
+    .xp-foot b { color: var(--ink); font-weight: 600; }
+    .ranks { display: grid; gap: 10px; }
+    .ranks .rh { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.04em; color: var(--light); padding: 0 2px 2px; }
+    .rk { display: grid; grid-template-columns: 64px 1fr; gap: 10px; align-items: center; border: 1.5px solid var(--rc); border-radius: 12px; padding: 8px 12px 8px 8px; background: #fff; }
+    .rk img { width: 64px; height: 64px; display: block; }
+    .rk { padding-right: 14px; }
+    .rk .rl { font-family: var(--display); font-weight: 700; font-size: 12.5px; color: var(--rc); }
+    .rk .rv { font-family: var(--display); font-weight: 800; font-size: 22px; letter-spacing: -0.02em; color: var(--ink); line-height: 1.1; }
+    .rk .rv small { font-size: 12px; font-weight: 500; color: var(--mute); margin-left: 3px; letter-spacing: 0; }
+    .rk .bar { height: 4px; border-radius: 2px; background: #EEF1F5; margin-top: 6px; overflow: hidden; }
+    .rk .bar i { display: block; height: 100%; width: var(--w); background: var(--rc); border-radius: 2px; }
+    .rk.r1 { --rc: #3BAF5C; } .rk.r2 { --rc: #D9A520; } .rk.r3 { --rc: #DE5A5A; }
+
+
+    /* ---- abstract toggle & number strip ---- */
+    details.abs { margin-top: 10px; }
+    details.abs summary { cursor: pointer; list-style: none; font-family: var(--display); font-weight: 700; font-size: 14px; color: var(--accent-deep); display: inline-flex; align-items: center; gap: 6px; }
+    details.abs summary::-webkit-details-marker { display: none; }
+    details.abs summary::after { content: "+"; font-weight: 800; }
+    details.abs[open] summary::after { content: "–"; }
+    details.abs p { font-size: 15.5px !important; line-height: 1.65 !important; color: var(--body) !important; margin: 10px 0 0 !important; }
+    .strip { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--card); border-radius: 16px; box-shadow: var(--shadow); margin-top: 16px; overflow: hidden; }
+    .strip > div { padding: 18px 20px; border-left: 1px solid var(--rule); }
+    .strip > div:first-child { border-left: 0; }
+    .strip .n { font-family: var(--display); font-weight: 800; font-size: 1.9rem; letter-spacing: -0.03em; color: var(--accent); line-height: 1; }
+    .strip .n small { font-size: 1rem; font-weight: 600; margin-left: 2px; }
+    .strip .d { font-size: 13.5px; color: var(--mute); margin-top: 8px; line-height: 1.5; }
+    .strip .d b { color: var(--ink); font-weight: 600; }
+    .tilelink { display: inline-block; margin-top: 4px; font-weight: 600; }
+    .tpane img { margin: 0 auto; }
+
+    /* ---- method stepper ---- */
+    .stepper { padding: 20px 22px 18px; outline: none; }
+    .stepper:focus-visible { box-shadow: var(--shadow), 0 0 0 3px var(--accent-soft); }
+    .st-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+    .st-count { font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.04em; color: var(--accent-deep); background: var(--accent-soft); border-radius: 999px; padding: 3px 10px; flex: none; }
+    .st-title { font-size: 1.15rem; font-weight: 700; margin: 0; }
+    .st-stage { position: relative; background: #fff; border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
+    #scene { display: block; width: 100%; height: auto; font-family: var(--sans); }
+    .st-side { display: grid; gap: 14px; }
+    .st-map { position: relative; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; background: #fff; }
+    .st-map img { display: block; width: 100%; }
+    .st-hl { position: absolute; border: 2px solid var(--accent); border-radius: 4px; box-shadow: 0 0 0 2000px rgba(244,246,249,0.72); transition: left 320ms ease, top 320ms ease, width 320ms ease, height 320ms ease; }
+    .st-map.none .st-hl { display: none; }
+    .st-map.none img { opacity: 0.25; }
+    .st-maplbl { position: absolute; left: 8px; bottom: 6px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.03em; color: var(--mute); background: rgba(255,255,255,0.85); padding: 2px 6px; border-radius: 4px; }
+    .st-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 18px; opacity: 0; transition: opacity 320ms ease-out; }
+    .st-img.on { opacity: 1; }
+    .st-foot { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
+    .st-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--rule); background: #fff; color: var(--ink); font-size: 16px; cursor: pointer; display: grid; place-items: center; transition: background 140ms ease, transform 140ms ease; }
+    .st-btn:hover { background: var(--bg); }
+    .st-btn:active { transform: scale(0.94); }
+    .st-btn:disabled { opacity: 0.35; cursor: default; }
+    .st-dots { display: flex; gap: 6px; flex: 1; }
+    .st-dot { height: 4px; flex: 1; border-radius: 2px; background: #E2E6EC; border: 0; padding: 0; cursor: pointer; position: relative; overflow: hidden; }
+    .st-dot.done { background: #C7D4EA; }
+    .st-dot.on { background: var(--accent); }
+    .st-dot.on.playing::after { content: ""; position: absolute; inset: 0; background: var(--accent-deep); transform-origin: left; animation: st-progress var(--dur, 6s) linear forwards; }
+    @keyframes st-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    .st-play { font-family: var(--display); font-weight: 700; font-size: 12.5px; color: var(--mute); background: transparent; border: 1px solid var(--rule); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+    .st-play[aria-pressed="true"] { color: var(--accent-deep); border-color: var(--accent); background: var(--accent-soft); }
+    .st-caps { position: relative; margin-top: 14px; min-height: 60px; }
+    .st-cap { display: none; margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--body); max-width: 900px; }
+    .st-cap.on { display: block; animation: st-fade 260ms ease-out; }
+    @keyframes st-fade { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
+    .st-cap b { color: var(--ink); font-weight: 600; }
+    @media (max-width: 900px) { .st-play { display: none; } .st-title { font-size: 1.02rem; } }
+    @media (prefers-reduced-motion: reduce) { .st-img, .st-cap.on { transition: none; animation: none; } .st-dot.on.playing::after { animation: none; } }
+
+    /* scene elements */
+    #row1 { transition: transform 560ms cubic-bezier(.4,0,.2,1); }
+    #scene[data-step="1"] #row1, #scene[data-step="2"] #row1, #scene[data-step="3"] #row1 { transform: translateY(150px); }
+    #scene .el { opacity: 0; transition: opacity 460ms ease-out, transform 460ms ease-out; transform: translateY(8px); }
+    #scene .el.vis { opacity: 1; transform: none; }
+    #scene .node { fill: #fff; stroke: #C9D2DD; stroke-width: 1.5; filter: url(#sh); }
+    #scene .node.enc { fill: #F5F7FA; stroke: #B7C0CC; }
+    #scene .pill { fill: #fff; stroke-width: 1.5; filter: url(#sh); }
+    #scene .bdg-f rect { fill: #EEF1F5; } #scene .bdg-f text { fill: #626B7A; }
+    #scene .bdg-t rect { fill: #E8F0FC; } #scene .bdg-t text { fill: #1F4FA6; }
+    #scene .bdg-f text, #scene .bdg-t text { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.06em; font-weight: 500; }
+    #scene .lbl { font-size: 12.5px; fill: #626B7A; }
+    #scene .note { font-size: 12.5px; fill: #9AA3B2; font-style: italic; }
+    #scene .box { font-size: 15px; font-weight: 600; fill: #171A21; font-family: var(--display); letter-spacing: -0.01em; }
+    #scene .box.t { fill: #1F5FA8; } #scene .box.o { fill: #B83A3A; } #scene .box.s { fill: #237A47; }
+    #scene .sub { font-size: 12.5px; fill: #626B7A; }
+    #scene .h { font-size: 15px; font-weight: 700; fill: #171A21; font-family: var(--display); }
+    #scene .pred { font-size: 17px; font-weight: 700; fill: #171A21; font-family: var(--display); letter-spacing: -0.01em; }
+    #scene .q { font-size: 13px; fill: #171A21; font-weight: 600; }
+    #scene .cand { font-size: 12.5px; fill: #171A21; font-weight: 600; font-family: var(--display); }
+    #scene .chip { font-size: 13px; font-weight: 700; font-family: var(--display); } #scene .chip.t { fill: #1F5FA8; } #scene .chip.o { fill: #B83A3A; } #scene .chip.s { fill: #237A47; }
+    #scene .chipv { font-size: 12.5px; fill: #626B7A; }
+    #scene .fl { stroke: #7B8794; stroke-width: 1.8; fill: none; marker-end: url(#m-g); }
+    #scene .fl-t { stroke: #2F7FD1; stroke-width: 1.8; fill: none; marker-end: url(#m-t); }
+    #scene .fl-o { stroke: #D64545; stroke-width: 1.8; fill: none; marker-end: url(#m-o); }
+    #scene .fl-s { stroke: #2E9E5B; stroke-width: 1.8; fill: none; marker-end: url(#m-s); }
+    #scene .fl-y { stroke: #C7901A; stroke-width: 1.8; fill: none; marker-end: url(#m-y); }
+    #scene .shared { stroke: #7B3FA0; stroke-width: 1.5; stroke-dasharray: 3 4; fill: none; }
+    #scene .shared-t { fill: #7B3FA0; }
+    #scene .act { transition: fill 500ms ease; }
+    #scene[data-step="3"] .act1, #scene[data-step="5"] .act1, #scene[data-step="6"] .act1, #scene[data-step="7"] .act1, #scene[data-step="8"] .act1 { fill: #9DC3EC; }
+    #scene[data-step="3"] .act2, #scene[data-step="5"] .act2, #scene[data-step="6"] .act2, #scene[data-step="7"] .act2, #scene[data-step="8"] .act2 { fill: #9DC3EC; }
+    #scene[data-step="3"] .act3, #scene[data-step="5"] .act3, #scene[data-step="6"] .act3, #scene[data-step="7"] .act3, #scene[data-step="8"] .act3 { fill: #F0A6A6; }
+    #scene[data-step="3"] .act4, #scene[data-step="5"] .act4, #scene[data-step="6"] .act4, #scene[data-step="7"] .act4, #scene[data-step="8"] .act4 { fill: #F0A6A6; }
+    #scene[data-step="3"] .act5, #scene[data-step="5"] .act5, #scene[data-step="6"] .act5, #scene[data-step="7"] .act5, #scene[data-step="8"] .act5 { fill: #9ED9B2; }
+    #scene[data-step="3"] .act6, #scene[data-step="5"] .act6, #scene[data-step="6"] .act6, #scene[data-step="7"] .act6, #scene[data-step="8"] .act6 { fill: #9ED9B2; }
+    #scene[data-step="4"] .act1 { fill: #2F7FD1; } #scene[data-step="4"] .act2 { fill: #9DC3EC; }
+    #scene[data-step="4"] .act3 { fill: #D64545; } #scene[data-step="4"] .act4 { fill: #F0A6A6; }
+    #scene[data-step="4"] .act5 { fill: #2E9E5B; } #scene[data-step="4"] .act6 { fill: #9ED9B2; }
+    #scene[data-step="7"] .act1, #scene[data-step="8"] .act1 { fill: #2F7FD1; } #scene[data-step="7"] .act4, #scene[data-step="8"] .act4 { fill: #D64545; } #scene[data-step="7"] .act6, #scene[data-step="8"] .act6 { fill: #2E9E5B; }
+    @media (prefers-reduced-motion: reduce) { #scene .el, #scene .act, #row1 { transition: none; } }
+
+    /* ---- why: three explanations ---- */
+    .why-strip { display: grid; grid-template-columns: 150px minmax(0,1fr); gap: 18px; align-items: center; background: var(--card); border-radius: 16px; box-shadow: var(--shadow); padding: 12px 18px 12px 12px; margin-bottom: 16px; }
+    .why-clip { border-radius: 10px; overflow: hidden; background: #000; aspect-ratio: 4 / 3; }
+    .why-clip img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .why-lbl { font-family: var(--display); font-weight: 700; font-size: 14px; color: var(--ink); }
+    .why-gt { font-size: 14px; color: var(--mute); margin-top: 2px; }
+    .why-q { font-size: 16px; color: var(--ink); margin-top: 8px; }
+    .why-q b { font-weight: 600; }
+    .three .c { display: flex; flex-direction: column; }
+    .why-ex { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: #fff; }
+    .why-ex img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .why-ex.pose img { object-fit: contain; padding: 14px 16px 10px; }
+    .why-tag { position: absolute; left: 10px; bottom: 10px; background: rgba(255,255,255,0.92); border-radius: 8px; padding: 3px 9px; font-size: 12.5px; font-style: italic; color: var(--ink); }
+    .three .body { padding: 14px 18px 6px; }
+    .three h3 .ours { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.05em; color: var(--accent-deep); background: var(--accent-soft); border-radius: 999px; padding: 2px 7px; margin-left: 4px; vertical-align: 2px; }
+    .why-bubble { width: 86%; max-width: 300px; margin: auto auto 14px; display: block; }
+    /* ---- stage transitions ---- */
+    .stage .slide { opacity: 0; transition: opacity 220ms ease-out; }
+    .stage .slide.on { opacity: 1; }
+    .tpane { opacity: 0; transition: opacity 180ms ease-out; }
+    .tpane.on { opacity: 1; }
+    .thumb { transition: background 140ms ease, border-color 140ms ease, transform 140ms ease, box-shadow 140ms ease; }
+
+    /* ---- wide figure + lightbox ---- */
+    .breakout { width: min(1320px, calc(100vw - 32px)); margin-left: 50%; transform: translateX(-50%); }
+    .zoomable { cursor: zoom-in; }
+    .zoomhint { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.03em; color: var(--light); text-align: right; margin-top: 8px; }
+    .lightbox { position: fixed; inset: 0; background: rgba(16,20,28,0.92); z-index: 100; display: none; overflow: auto; cursor: zoom-out; padding: 24px; }
+    .lightbox.on { display: block; }
+    .lightbox img { display: block; margin: 0 auto; width: max(100%, 1800px); max-width: none; height: auto; border-radius: 8px; background: #fff; padding: 12px; }
+    @media (max-width: 900px) {
+      .xp { grid-template-columns: minmax(0,1fr); }
+      .ranks { grid-template-columns: repeat(3, 1fr); }
+      .rk { grid-template-columns: 44px 1fr; padding: 6px 8px 6px 6px; }
+      .rk img { width: 44px; height: 44px; }
+      .rk .rv { font-size: 17px; }
+      .ranks .rh { grid-column: 1 / -1; }
+      .breakout { width: 100%; margin-left: 0; transform: none; }
+      .hero-visual .hv-cap { padding: 28px 14px 12px; font-size: 13px; }
+      .hero-visual .hv-legend { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { .stage .slide, .tpane, .thumb { transition: none; } }
     @media (max-width: 900px) {
       .viewer { grid-template-columns: minmax(0,1fr); }
       .viewer > * { min-width: 0; }
       .thumbs { flex-direction: row; overflow-x: auto; padding-bottom: 4px; min-width: 0; }
       .thumb { min-width: 220px; flex: none; }
       .three, .ideas, .tiles, .works { grid-template-columns: minmax(0,1fr); }
+      .strip { grid-template-columns: minmax(0,1fr); }
+      .strip > div { border-left: 0; border-top: 1px solid var(--rule); }
+      .strip > div:first-child { border-top: 0; }
       .two { grid-template-columns: minmax(0,1fr); }
       .steps { grid-template-columns: 1fr 1fr; }
       .tldr { grid-template-columns: minmax(0,1fr); gap: 8px; }
@@ -252,12 +426,12 @@
       <div class="venue"><i></i> NeurIPS 2026 · Poster</div>
       <h1><span class="acr">TraCE</span>: Trajectory-Aware Concepts for Explainable Video Understanding</h1>
       <div class="authors">
-        <span><a href="#">Wooil Lee</a><sup>1,†</sup>,</span>
-        <span><a href="#">Junpyo Hong</a><sup>1,†</sup>,</span>
-        <span><a href="https://jong980812.github.io/">Jongseo Lee</a><sup>1</sup>,</span>
-        <span><a href="https://tuomaso.github.io/">Tuomas Oikarinen</a><sup>2</sup>,</span>
-        <span><a href="https://lilywenglab.github.io/">Tsui-Wei Weng</a><sup>2</sup>,</span>
-        <span><a href="https://sites.google.com/site/jchoivision/">Jinwoo Choi</a><sup>1,*</sup></span>
+        <span>Wooil Lee<sup>1,†</sup>,</span>
+        <span>Junpyo Hong<sup>1,†</sup>,</span>
+        <span>Jongseo Lee<sup>1</sup>,</span>
+        <span>Tuomas Oikarinen<sup>2</sup>,</span>
+        <span>Tsui-Wei Weng<sup>2</sup>,</span>
+        <span>Jinwoo Choi<sup>1,*</sup></span>
       </div>
       <div class="affil">
         <sup>1</sup>Kyung Hee University &nbsp;&nbsp; <sup>2</sup>University of California San Diego
@@ -272,6 +446,12 @@
         <a class="btn" href="#bibtex"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h8v1.5H8V8zm0 3h8v1.5H8V11zm0 3h5v1.5H8V14z"/></svg>BibTeX</a>
       </div>
     </div>
+    <!-- HERO VIDEO SLOT (currently empty). When the story video is ready, uncomment and set the file:
+    <div class="hero-visual">
+      <video autoplay muted loop playsinline poster="static/images/hero_poster.jpg"><source src="static/videos/hero.mp4" type="video/mp4"></video>
+      <div class="hv-cap"><b>One-line caption.</b> Short description of what the video shows.</div>
+    </div>
+    -->
   </div>
 </header>
 
@@ -286,18 +466,36 @@
       <div class="viewer">
         <div class="stage" id="stage">
           <div class="slide on" data-k="a">
-            <div class="anim">
-              <img class="static" src="static/images/ar_a.png" alt="Action recognition explanation for 'Pushing other person': top-3 trajectory concepts with contributions 30.5%, 26.0%, 3.0%.">
-              <img class="clip" src="static/videos/ar_a.gif" alt="" style="left:15.32%; top:12.08%; width:66.06%; height:45.76%;">
+            <div class="xp">
+              <div class="xp-left">
+                <div class="xp-meta">NTU RGB+D MUTUAL · ACTION RECOGNITION</div>
+                <div class="xp-pred">Pred: <span class="q">“Pushing other person”</span><span class="ok">✓</span></div>
+                <div class="xp-video"><img src="static/videos/ar_a.gif" alt="Two people in an office; one pushes the other. Green and red chevron trails mark the pushing arm and the pushed person's displacement."></div>
+                <div class="xp-foot"><b>(a) Multi-agent interaction.</b> Rank 1 follows the pushing arm; Rank 2 follows the other person being displaced. Both sources are explicit.</div>
+              </div>
+              <div class="ranks">
+                <div class="rh">TOP-3 CONCEPTS · CONTRIBUTION</div>
+                <div class="rk r1"><img src="static/images/concept_a1.svg" alt=""><div><div class="rl">Rank 1</div><div class="rv">30.5<small>%</small></div><div class="bar"><i style="--w:100%"></i></div></div></div>
+                <div class="rk r2"><img src="static/images/concept_a2.svg" alt=""><div><div class="rl">Rank 2</div><div class="rv">26.0<small>%</small></div><div class="bar"><i style="--w:85%"></i></div></div></div>
+                <div class="rk r3"><img src="static/images/concept_a3.svg" alt=""><div><div class="rl">Rank 3</div><div class="rv">3.0<small>%</small></div><div class="bar"><i style="--w:10%"></i></div></div></div>
+              </div>
             </div>
-            <span class="tag">ACTION RECOGNITION · NTU RGB+D MUTUAL</span>
           </div>
           <div class="slide" data-k="b">
-            <div class="anim">
-              <img class="static" src="static/images/ar_b.png" alt="Action recognition explanation for 'Moving something and something closer to each other': top-3 trajectory concepts with contributions 27.2%, 18.8%, 14.7%.">
-              <img class="clip" src="static/videos/ar_b.gif" alt="" style="left:31.32%; top:10.83%; width:38.71%; height:46.72%;">
+            <div class="xp">
+              <div class="xp-left">
+                <div class="xp-meta">CHIRAL SSV2 · ACTION RECOGNITION</div>
+                <div class="xp-pred">Pred: <span class="q">“Moving [something] and [something] closer to each other”</span><span class="ok">✓</span></div>
+                <div class="xp-video"><img src="static/videos/ar_b.gif" alt="A hand slides a cup and a lid toward each other on a table; chevron trails follow the two objects."></div>
+                <div class="xp-foot"><b>(b) Object-centric dynamics.</b> The body is barely in frame. The top concepts follow the two objects being brought together; there is no joint to attach this motion to.</div>
+              </div>
+              <div class="ranks">
+                <div class="rh">TOP-3 CONCEPTS · CONTRIBUTION</div>
+                <div class="rk r1"><img src="static/images/concept_b1.svg" alt=""><div><div class="rl">Rank 1</div><div class="rv">27.2<small>%</small></div><div class="bar"><i style="--w:100%"></i></div></div></div>
+                <div class="rk r2"><img src="static/images/concept_b2.svg" alt=""><div><div class="rl">Rank 2</div><div class="rv">18.8<small>%</small></div><div class="bar"><i style="--w:69%"></i></div></div></div>
+                <div class="rk r3"><img src="static/images/concept_b3.svg" alt=""><div><div class="rl">Rank 3</div><div class="rv">14.7<small>%</small></div><div class="bar"><i style="--w:54%"></i></div></div></div>
+              </div>
             </div>
-            <span class="tag">ACTION RECOGNITION · CHIRAL SSV2</span>
           </div>
           <div class="slide" data-k="c">
             <div class="anim">
@@ -346,7 +544,13 @@
   <div class="wrap">
     <div class="panel tldr">
       <div class="lbl">TL;DR</div>
-      <p>Existing video explanations say <i>that</i> motion matters but not <i>which</i> motion. TraCE clusters optical-flow trajectories into <span class="typed t">Trajectory</span> concepts and pairs them with <span class="typed o">Object</span> and <span class="typed s">Scene</span> concepts, so one typed interface explains both action recognition and VQA, at a cost of about one accuracy point.</p>
+      <div>
+        <p>Existing video explanations say <i>that</i> motion matters but not <i>which</i> motion. TraCE clusters optical-flow trajectories into <span class="typed t">Trajectory</span> concepts and pairs them with <span class="typed o">Object</span> and <span class="typed s">Scene</span> concepts, so one typed interface explains both action recognition and VQA, at a cost of about one accuracy point.</p>
+        <details class="abs">
+          <summary>Read the abstract</summary>
+          <p>Video understanding models often rely on motion, but faithful explanations must reveal not only whether motion matters, but also <i>which source of motion</i> supports a prediction. We identify <i>motion-source under-specification</i> as a key limitation of existing video XAI: region-centric explanations are source-ambiguous, while concept-based explanations are source-incomplete when their motion vocabulary is restricted to single-person pose sequences. To bridge this gap, we propose TraCE—Trajectory-Aware Concepts for Explainable Video Understanding—a concept-based framework that elevates visual trajectories to first-class explanatory concepts. By clustering optical-flow trajectories, TraCE discovers <i>source-flexible</i> motion concepts that capture dynamic evidence from people, objects, and interactions, while object and scene concepts account for static context. TraCE applies the same typed trajectory/object/scene concept interface to both action recognition and video question answering (VQA), enabling concept-level explanations beyond a single task. We evaluate TraCE across six benchmarks: NTU RGB+D Mutual, Chiral SSv2, UCF-101, KTH, TOMATO, and STAR. Across five random seeds, TraCE provides trajectory-aware explanations of dynamic evidence with a modest 1.0-point average trade-off on action recognition and comparable VQA performance (a nominal 0.4-point average gain) relative to non-interpretable baselines. User studies, faithfulness analyses, temporal sensitivity tests, and concept-intervention results further show that TraCE produces interpretable, faithful, and practically useful explanations.</p>
+        </details>
+      </div>
     </div>
   </div>
 </section>
@@ -356,29 +560,40 @@
   <div class="wrap">
     <div class="head">
       <h2>Why trajectories? Motion-source under-specification</h2>
-      <p>Motion in a video comes from actors, manipulated objects, and interactions among entities, each with different semantics. For the same <i>Soccer Penalty</i> clip, here is what each family of explanation can and cannot tell you.</p>
+      <p>Motion in a video comes from actors, manipulated objects, and interactions among entities, each with different semantics. Same clip, same prediction, three ways of explaining it.</p>
+    </div>
+    <div class="why-strip">
+      <div class="why-clip"><img src="static/videos/why_input.gif" alt="Input clip: a soccer penalty kick with a goalkeeper diving, the ball in flight, and the kicker running."></div>
+      <div class="why-strip-t">
+        <div class="why-lbl">Input video</div>
+        <div class="why-gt">Ground truth and prediction: <i>“Soccer Penalty”</i></div>
+        <div class="why-q">The model is right. But <b>what motion did it rely on</b>, and whose?</div>
+      </div>
     </div>
     <div class="three">
       <div class="c amb">
-        <img src="static/images/cmp_heatmap.png" alt="Concept-based heatmap over the soccer clip: a diffuse saliency map labelled 'Concept: Soccer goal'.">
+        <div class="why-ex"><img src="static/videos/why_heatmap.gif" alt="A concept heatmap over the clip labelled Concept: Soccer goal, highlighting a diffuse region."><div class="why-tag">Concept: Soccer goal</div></div>
         <div class="body">
-          <h3><span class="dot" style="background:var(--amb)"></span>Source-ambiguous</h3>
-          <p>Region-centric heatmaps show <i>where</i> evidence is. The highlighted region mixes the kicker, the ball, and the static goal, so the user has to infer the motion themselves.</p>
+          <h3><span class="dot" style="background:var(--amb)"></span>Concept heatmap</h3>
+          <p>Region-centric heatmaps show <i>where</i> evidence is. The highlighted region mixes the kicker, the ball, and the static goal, so the viewer has to infer the motion themselves.</p>
         </div>
+        <img class="why-bubble" src="static/images/why_bubble_amb.png" alt="A puzzled viewer: 'But what is the model actually relying on?' Source-ambiguous.">
       </div>
       <div class="c inc">
-        <img src="static/images/cmp_pose.png" alt="Pose-based concept: a sequence of skeletons of one player over time.">
+        <div class="why-ex pose"><img src="static/images/why_pose.png" alt="A pose-based concept: the skeleton of one player over time."></div>
         <div class="body">
-          <h3><span class="dot" style="background:var(--obj)"></span>Source-incomplete</h3>
-          <p>Pose-based concepts make one person's body motion explicit, but the vocabulary is defined over human joints. The ball and the other players have no concept to land on.</p>
+          <h3><span class="dot" style="background:var(--obj)"></span>Pose-based concepts</h3>
+          <p>One person's body motion becomes explicit, but the vocabulary is defined over human joints. The ball's flight and the other players have no concept to land on.</p>
         </div>
+        <img class="why-bubble" src="static/images/why_bubble_inc.png" alt="A puzzled viewer: 'What about the ball, or the other players?' Source-incomplete.">
       </div>
       <div class="c flx">
-        <img src="static/images/cmp_traj.png" alt="Trajectory-based concept: chevron trails on the goalkeeper, the ball, and the kicker.">
+        <div class="why-ex"><img src="static/videos/why_traj.gif" alt="Trajectory concepts drawn as chevron trails on the goalkeeper, the ball, and the kicker."></div>
         <div class="body">
-          <h3><span class="dot" style="background:var(--scene)"></span>Source-flexible (TraCE)</h3>
-          <p>Every moving entity gets its own trajectory concept: goalkeeper dive, ball flight, kicker's run. Object and scene concepts cover the static context separately.</p>
+          <h3><span class="dot" style="background:var(--scene)"></span>Trajectory concepts <span class="ours">TraCE</span></h3>
+          <p>Every moving entity gets its own concept: the goalkeeper's dive, the ball's flight, the kicker's run. Object and scene concepts cover the static context separately.</p>
         </div>
+        <img class="why-bubble" src="static/images/why_bubble_flex.png" alt="A satisfied viewer: 'Now I can see what every entity is doing!' Source-flexible.">
       </div>
     </div>
   </div>
@@ -389,40 +604,227 @@
   <div class="wrap">
     <div class="head">
       <h2>One typed concept interface, two tasks</h2>
-      <p>A frozen video encoder feeds a concept layer that outputs <b>z = [z<sup>t</sup>; z<sup>o</sup>; z<sup>s</sup>]</b>. Action recognition trains a sparse linear classifier on <b>z</b>; VQA projects each question–answer pair into the same concept space and scores answers by concept matching.</p>
+      <p>Eight steps, one diagram. Use the arrows (or ← →) to build the model up from a plain video classifier to a typed concept interface that explains both action recognition and video question answering.</p>
     </div>
-    <div class="fig">
-      <img src="static/images/overview.png" alt="Overview of TraCE: a frozen video encoder feeds a typed trajectory/object/scene concept layer; action recognition uses a linear classifier on concept activations, while VQA matches question-conditioned text-side concept relevance against video-side concepts.">
+    <div class="panel stepper" id="stepper" tabindex="0" aria-roledescription="carousel" aria-label="Method walkthrough">
+      <div class="st-head">
+        <div class="st-count"><span id="st-n">1</span> / 8</div>
+        <h3 class="st-title" id="st-title">Start from a black-box video model</h3>
+      </div>
+
+      <div class="st-stage" id="st-stage">
+        <svg id="scene" viewBox="0 0 1200 620" data-step="1" role="img" aria-label="Animated diagram of the TraCE architecture">
+          <defs>
+            <marker id="m-g" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0.5 L10 5 L0 9.5 Z" fill="#7B8794"/></marker>
+            <marker id="m-t" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0 0.5 L10 5 L0 9.5 Z" fill="#2F7FD1"/></marker>
+            <marker id="m-o" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0 0.5 L10 5 L0 9.5 Z" fill="#D64545"/></marker>
+            <marker id="m-s" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0 0.5 L10 5 L0 9.5 Z" fill="#2E9E5B"/></marker>
+            <marker id="m-y" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0 0.5 L10 5 L0 9.5 Z" fill="#C7901A"/></marker>
+            <symbol id="ic-snow" viewBox="0 0 24 24"><g fill="none" stroke="#5FAEE3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/><path d="M12 2l-2.5 2.5M12 2l2.5 2.5M12 22l-2.5-2.5M12 22l2.5-2.5M2 12l2.5-2.5M2 12l2.5 2.5M22 12l-2.5-2.5M22 12l-2.5 2.5"/></g><circle cx="12" cy="12" r="2.2" fill="#BFE3F7"/></symbol>
+            <symbol id="ic-fire" viewBox="0 0 24 24"><path d="M12 2c1 3.5 4.5 5 4.5 9.5A4.5 4.5 0 0 1 12 16a4.5 4.5 0 0 1-4.5-4.5c0-1.6.6-2.8 1.5-3.8.3 1.2 1 2 2 2.3C10.5 7 10.8 4.3 12 2z" fill="#F08A24"/><path d="M12 9.5c.7 1.6 2.2 2.3 2.2 4.2A2.2 2.2 0 0 1 12 16a2.2 2.2 0 0 1-2.2-2.3c0-1 .5-1.7 1-2.2.2.7.6 1.1 1 1.3-.2-1.2 0-2.3.2-3.3z" fill="#FFC94D"/></symbol>
+            <filter id="sh" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#10141C" flood-opacity="0.08"/></filter>
+            <clipPath id="cv1"><rect x="40" y="110" width="180" height="102" rx="10"/></clipPath>
+            <clipPath id="cv2"><rect x="50" y="102" width="180" height="102" rx="10"/></clipPath>
+            <clipPath id="cv3"><rect x="60" y="94" width="180" height="102" rx="10"/></clipPath>
+          </defs>
+
+          <g id="row1">
+            <!-- input video (step 4+) -->
+            <g class="el" data-from="4">
+              <image href="static/images/cmp_input_frame.png" x="60" y="94" width="180" height="102" preserveAspectRatio="xMidYMid slice" clip-path="url(#cv3)" opacity="0.5"/>
+              <image href="static/images/cmp_input_frame.png" x="50" y="102" width="180" height="102" preserveAspectRatio="xMidYMid slice" clip-path="url(#cv2)" opacity="0.75"/>
+              <image href="static/images/cmp_input_frame.png" x="40" y="110" width="180" height="102" preserveAspectRatio="xMidYMid slice" clip-path="url(#cv1)"/>
+              <rect x="40" y="110" width="180" height="102" rx="10" fill="none" stroke="#C9D2DD" stroke-width="1.5"/>
+              <text x="130" y="238" class="lbl" text-anchor="middle">Input video</text>
+              <path d="M228 160 H254" class="fl"/>
+            </g>
+            <!-- video encoder -->
+            <g class="el" data-from="1">
+              <rect x="262" y="112" width="110" height="96" rx="12" class="node enc"/>
+              <text x="317" y="156" class="box" text-anchor="middle">Video</text>
+              <text x="317" y="176" class="box" text-anchor="middle">encoder</text>
+              <circle cx="367.8" cy="112.0" r="13" fill="#fff" stroke="#E2E6EC" stroke-width="1"/><use href="#ic-snow" x="356.8" y="101.0" width="22" height="22"/>
+              <path d="M380 160 H404" class="fl"/>
+            </g>
+            <!-- feature -->
+            <g class="el" data-from="1">
+              <rect x="410" y="110" width="30" height="100" rx="15" class="pill" style="stroke:#9AA3B2"/><circle class="ft ft1" cx="425" cy="125.0" r="8" fill="#C3CAD4"/><circle class="ft ft2" cx="425" cy="148.3" r="8" fill="#C3CAD4"/><circle class="ft ft3" cx="425" cy="171.7" r="8" fill="#C3CAD4"/><circle class="ft ft4" cx="425" cy="195.0" r="8" fill="#C3CAD4"/>
+              <text x="425" y="234" class="lbl" text-anchor="middle">feature</text>
+            </g>
+            <!-- step 1 : straight to classifier -->
+            <g class="el" data-from="1" data-to="1">
+              <path d="M446 160 H754" class="fl"/>
+              <text x="600" y="146" class="note" text-anchor="middle">features in, label out, nothing to point at</text>
+            </g>
+            <!-- step 2 : one concept layer -->
+            <g class="el" data-from="2" data-to="2">
+              <path d="M446 160 H478" class="fl"/>
+              <rect x="486" y="112" width="160" height="96" rx="12" class="node" style="fill:#FFF8E1; stroke:#E2B53A"/>
+              <text x="566" y="166" class="box" text-anchor="middle">Concept layer</text>
+              <path d="M654 160 H684" class="fl"/>
+            </g>
+            <!-- step 3+ : typed layers -->
+            <g class="el" data-from="3">
+              <path d="M446 126 C458 126, 456 94, 468 94 H478" class="fl-t"/>
+              <path d="M446 160 H478" class="fl-o"/>
+              <path d="M446 194 C458 194, 456 226, 468 226 H478" class="fl-s"/>
+              <rect x="486" y="70" width="160" height="48" rx="10" class="node" style="fill:#EAF2FC; stroke:#2F7FD1"/>
+              <text x="566" y="99" class="box t" text-anchor="middle">Trajectory</text>
+              <rect x="486" y="136" width="160" height="48" rx="10" class="node" style="fill:#FCECEC; stroke:#D64545"/>
+              <text x="566" y="165" class="box o" text-anchor="middle">Object</text>
+              <rect x="486" y="202" width="160" height="48" rx="10" class="node" style="fill:#E9F6EE; stroke:#2E9E5B"/>
+              <text x="566" y="231" class="box s" text-anchor="middle">Scene</text>
+              <path d="M654 94 H684" class="fl-t"/>
+              <path d="M654 160 H684" class="fl-o"/>
+              <path d="M654 226 H684" class="fl-s"/>
+              <text x="566" y="274" class="lbl" text-anchor="middle">video concept layer</text>
+            </g>
+            <!-- activations (step 2+) -->
+            <g class="el" data-from="2">
+              <rect x="690" y="62" width="30" height="196" rx="15" class="pill" style="stroke:#9AA3B2"/><circle class="act act1" cx="705" cy="77.0" r="8" fill="#D5DBE4"/><circle class="act act2" cx="705" cy="110.2" r="8" fill="#D5DBE4"/><circle class="act act3" cx="705" cy="143.4" r="8" fill="#D5DBE4"/><circle class="act act4" cx="705" cy="176.6" r="8" fill="#D5DBE4"/><circle class="act act5" cx="705" cy="209.8" r="8" fill="#D5DBE4"/><circle class="act act6" cx="705" cy="243.0" r="8" fill="#D5DBE4"/>
+              <text x="705" y="282" class="lbl" text-anchor="middle">concept activations</text>
+            </g>
+            <!-- classifier (steps 1-4) -->
+            <g class="el" data-from="1" data-to="4">
+              <path d="M730 160 H754" class="fl"/>
+              <rect x="762" y="124" width="150" height="72" rx="12" class="node"/>
+              <text x="837" y="155" class="box" text-anchor="middle">Linear classifier</text>
+              <text x="837" y="175" class="sub" text-anchor="middle">sparse</text>
+              <circle cx="907.6" cy="124.0" r="13" fill="#fff" stroke="#E2E6EC" stroke-width="1"/><use href="#ic-fire" x="895.6" y="112.0" width="24" height="24"/>
+              <path d="M920 160 H946" class="fl"/>
+            </g>
+            <g class="el" data-from="1" data-to="3">
+              <text x="956" y="154" class="pred">Prediction</text>
+              <text x="956" y="174" class="sub">one of K action classes</text>
+            </g>
+            <g class="el" data-from="4" data-to="4">
+              <text x="956" y="154" class="pred">“Soccer Penalty”</text>
+              <circle cx="1118" cy="150" r="9" fill="#22A447"/><path d="M1113.5 150.5 l3 3 l6 -7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="956" y="174" class="sub">predicted action</text>
+            </g>
+            <!-- step 4 : top-3 strip -->
+            <g class="el" data-from="4" data-to="4">
+              <path d="M705 262 V306 Q705 316 695 316 H650 Q640 316 640 326 V344" class="fl-t" fill="none"/>
+              <path d="M705 262 V306 Q705 316 715 316 H810 Q820 316 820 326 V344" class="fl-o" fill="none"/>
+              <path d="M705 262 V306 Q705 316 715 316 H990 Q1000 316 1000 326 V344" class="fl-s" fill="none"/>
+              <text x="540" y="380" class="h" text-anchor="end">Top-3 concepts</text>
+              <text x="540" y="400" class="sub" text-anchor="end">for this prediction</text>
+              <rect x="556" y="352" width="168" height="66" rx="12" class="node" style="stroke:#2F7FD1"/>
+              <image href="static/images/concept_a1.svg" x="562" y="359" width="52" height="52"/>
+              <text x="622" y="380" class="chip t">Trajectory</text>
+              <text x="622" y="400" class="chipv">goalkeeper’s dive</text>
+              <rect x="621" y="352" width="0" height="0"/>
+              <rect x="736" y="352" width="168" height="66" rx="12" class="node" style="stroke:#D64545"/>
+              <text x="820" y="380" class="chip o" text-anchor="middle">Object</text>
+              <text x="820" y="400" class="chipv" text-anchor="middle">“Soccer player”</text>
+              <rect x="916" y="352" width="168" height="66" rx="12" class="node" style="stroke:#2E9E5B"/>
+              <text x="1000" y="380" class="chip s" text-anchor="middle">Scene</text>
+              <text x="1000" y="400" class="chipv" text-anchor="middle">“Soccer field”</text>
+              <text x="820" y="450" class="note" text-anchor="middle">contribution of a concept = its activation × its classifier weight</text>
+            </g>
+          </g>
+
+          <!-- ===== Row 2 : VQA ===== -->
+          <!-- step 5 : question + text encoder + text features -->
+          <g class="el" data-from="5">
+            <rect x="40" y="390" width="180" height="104" rx="10" class="node"/>
+            <text x="54" y="414" class="q">Q: “which way did the</text>
+            <text x="54" y="432" class="q">player kick the ball?”</text>
+            <rect x="54" y="446" width="46" height="20" rx="6" fill="#E9F6EE" stroke="#2E9E5B"/><text x="77" y="460" class="cand" text-anchor="middle">Left</text>
+            <rect x="106" y="446" width="56" height="20" rx="6" fill="#F3F5F8" stroke="#C9D2DD"/><text x="134" y="460" class="cand" text-anchor="middle">Center</text>
+            <rect x="168" y="446" width="44" height="20" rx="6" fill="#F3F5F8" stroke="#C9D2DD"/><text x="190" y="460" class="cand" text-anchor="middle">Right</text>
+            <text x="130" y="518" class="lbl" text-anchor="middle">question + J candidate answers</text>
+            <path d="M228 442 H254" class="fl"/>
+            <rect x="262" y="394" width="110" height="96" rx="12" class="node enc"/>
+            <text x="317" y="438" class="box" text-anchor="middle">Text</text>
+            <text x="317" y="458" class="box" text-anchor="middle">encoder</text>
+            <circle cx="367.8" cy="394.0" r="13" fill="#fff" stroke="#E2E6EC" stroke-width="1"/><use href="#ic-snow" x="356.8" y="383.0" width="22" height="22"/>
+            <path d="M380 442 H404" class="fl"/>
+            <rect x="418" y="384" width="30" height="100" rx="15" class="pill" style="stroke:#E2B53A"/>
+            <rect x="414" y="388" width="30" height="100" rx="15" class="pill" style="stroke:#E2B53A"/>
+            <rect x="410" y="392" width="30" height="100" rx="15" class="pill" style="stroke:#E2B53A"/><circle class="tf tf1" cx="425" cy="407.0" r="8" fill="#C3CAD4"/><circle class="tf tf2" cx="425" cy="430.3" r="8" fill="#C3CAD4"/><circle class="tf tf3" cx="425" cy="453.7" r="8" fill="#C3CAD4"/><circle class="tf tf4" cx="425" cy="477.0" r="8" fill="#C3CAD4"/>
+            <text x="425" y="518" class="lbl" text-anchor="middle">one feature</text>
+            <text x="425" y="534" class="lbl" text-anchor="middle">per candidate</text>
+          </g>
+          <!-- step 6 : text concept layer + relevance + shared link -->
+          <g class="el" data-from="6">
+            <path d="M446 408 C458 408, 456 376, 468 376 H478" class="fl-t"/>
+            <path d="M446 442 H478" class="fl-o"/>
+            <path d="M446 476 C458 476, 456 508, 468 508 H478" class="fl-s"/>
+            <rect x="486" y="352" width="160" height="48" rx="10" class="node" style="fill:#EAF2FC; stroke:#2F7FD1"/>
+            <text x="566" y="381" class="box t" text-anchor="middle">Trajectory</text>
+            <rect x="486" y="418" width="160" height="48" rx="10" class="node" style="fill:#FCECEC; stroke:#D64545"/>
+            <text x="566" y="447" class="box o" text-anchor="middle">Object</text>
+            <rect x="486" y="484" width="160" height="48" rx="10" class="node" style="fill:#E9F6EE; stroke:#2E9E5B"/>
+            <text x="566" y="513" class="box s" text-anchor="middle">Scene</text>
+            <text x="566" y="556" class="lbl" text-anchor="middle">text concept layer</text>
+            <text x="566" y="572" class="lbl" text-anchor="middle">same concepts, same order</text>
+            <path d="M654 376 H684" class="fl-t"/>
+            <path d="M654 442 H684" class="fl-o"/>
+            <path d="M654 508 H684" class="fl-s"/>
+            <rect x="698" y="336" width="30" height="196" rx="15" class="pill" style="stroke:#E2B53A"/>
+            <rect x="694" y="340" width="30" height="196" rx="15" class="pill" style="stroke:#E2B53A"/>
+            <rect x="690" y="344" width="30" height="196" rx="15" class="pill" style="stroke:#E2B53A"/><circle class="rel rel1" cx="705" cy="359.0" r="8" fill="#2F7FD1"/><circle class="rel rel2" cx="705" cy="392.2" r="8" fill="#9DC3EC"/><circle class="rel rel3" cx="705" cy="425.4" r="8" fill="#F0A6A6"/><circle class="rel rel4" cx="705" cy="458.6" r="8" fill="#D64545"/><circle class="rel rel5" cx="705" cy="491.8" r="8" fill="#9ED9B2"/><circle class="rel rel6" cx="705" cy="525.0" r="8" fill="#9ED9B2"/>
+            <text x="705" y="564" class="lbl" text-anchor="middle">concept relevance</text>
+            <text x="705" y="580" class="lbl" text-anchor="middle">one per candidate</text>
+            <path d="M566 286 V340" class="shared"/>
+            <text x="580" y="318" class="note shared-t">one shared concept space</text>
+          </g>
+          <!-- step 7 : concept-wise match -->
+          <g class="el" data-from="7">
+            <path d="M730 160 C772 160, 762 300, 796 300 H806" class="fl-y" fill="none"/>
+            <path d="M730 442 C772 442, 762 300, 796 300 H806" class="fl-y" fill="none"/>
+            <circle cx="822" cy="300" r="16" class="node" style="stroke:#C7901A"/>
+            <circle cx="822" cy="300" r="5" fill="#C7901A"/><circle cx="822" cy="300" r="10" fill="none" stroke="#C7901A" stroke-width="1.5"/>
+            <text x="822" y="338" class="lbl" text-anchor="middle">compare</text>
+            <text x="822" y="354" class="lbl" text-anchor="middle">unit by unit</text>
+            <path d="M840 300 H866" class="fl"/>
+            <rect x="872" y="202" width="30" height="196" rx="15" class="pill" style="stroke:#9AA3B2"/><circle class="mt mt1" cx="887" cy="217.0" r="8" fill="#2F7FD1"/><circle class="mt mt2" cx="887" cy="250.2" r="8" fill="#E6EAF0"/><circle class="mt mt3" cx="887" cy="283.4" r="8" fill="#E6EAF0"/><circle class="mt mt4" cx="887" cy="316.6" r="8" fill="#D64545"/><circle class="mt mt5" cx="887" cy="349.8" r="8" fill="#E6EAF0"/><circle class="mt mt6" cx="887" cy="383.0" r="8" fill="#9ED9B2"/>
+            <text x="887" y="424" class="lbl" text-anchor="middle">match for “Left”</text>
+            <text x="887" y="440" class="lbl" text-anchor="middle">most entries stay silent</text>
+          </g>
+          <!-- step 8 : sparse score -->
+          <g class="el" data-from="8">
+            <path d="M912 300 H938" class="fl"/>
+            <text x="925" y="290" class="note" text-anchor="middle">top-K</text>
+            <text x="950" y="246" class="h">Compatibility score</text>
+            <text x="950" y="282" class="cand">Left</text><rect x="1000" y="268" width="160" height="20" rx="5" fill="#E2B53A"/><text x="1152" y="282" class="cand" text-anchor="end" fill="#fff">2.38</text>
+            <text x="950" y="314" class="cand">Center</text><rect x="1000" y="300" width="65" height="20" rx="5" fill="#F1D78A"/><text x="1072" y="314" class="cand">0.97</text>
+            <text x="950" y="346" class="cand">Right</text><rect x="1000" y="332" width="52" height="20" rx="5" fill="#F7E7B3"/><text x="1059" y="346" class="cand">0.78</text>
+            <text x="950" y="392" class="pred">“Left”</text>
+            <circle cx="1014" cy="388" r="9" fill="#22A447"/><path d="M1009.5 388.5 l3 3 l6 -7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="950" y="414" class="sub">the few concepts that built the score</text>
+            <text x="950" y="430" class="sub">are the explanation</text>
+          </g>
+        </svg>
+      </div>
+      <div class="st-foot">
+        <button class="st-btn" id="st-prev" aria-label="Previous step">←</button>
+        <div class="st-dots" id="st-dots" role="tablist"></div>
+        <button class="st-btn" id="st-next" aria-label="Next step">→</button>
+        <button class="st-play" id="st-play" aria-pressed="false">Auto-play</button>
+      </div>
+      <div class="st-caps">
+        <p class="st-cap on">A frozen video encoder turns a clip into a feature vector and a classifier turns that into a label. It works, but nothing in between has a meaning you can point at: you cannot ask which motion the decision relied on.</p>
+        <p class="st-cap">TraCE puts a concept layer between the features and the classifier. Each of its units stands for one concept, and the classifier is only allowed to see those units. The explanation now lives inside the model rather than in a post-hoc heatmap.</p>
+        <p class="st-cap">The layer is split into three typed groups. <span class="typed t">Trajectory</span> concepts carry dynamic evidence, <span class="typed o">Object</span> and <span class="typed s">Scene</span> concepts carry static context. Keeping them separate is what lets TraCE say <i>which source</i> of evidence a prediction used. Where the trajectory concepts themselves come from is shown in the card below.</p>
+        <p class="st-cap">A clip flows through, concepts light up, and the sparse linear classifier sums them into a prediction. Because the classifier is linear, each concept's contribution is simply its activation times its weight. The three strongest here are a diving trajectory, the object “soccer player”, and the scene “soccer field”: the same kind of explanation you saw in the viewer above.</p>
+        <p class="st-cap">Video question answering adds a second input. The question is paired with each candidate answer and encoded by a frozen text encoder, giving one text feature per candidate. The video side is left exactly as it was; only the classifier is set aside.</p>
+        <p class="st-cap">A text concept layer maps each candidate into the same trajectory, object, and scene concepts, in the same order, as the video side. The result is a relevance vector per candidate: which concepts that answer would need to be true. Trajectory concepts have no names, so this part is learned from answer supervision rather than from text similarity.</p>
+        <p class="st-cap">For each candidate, the video's activations and the answer's relevance are compared unit by unit. A concept counts only if the video shows it <i>and</i> the answer needs it, so most entries stay silent and a few light up: here a leftward trajectory and the player object for “Left”.</p>
+        <p class="st-cap">Only the strongest few matches within each concept group are summed, with a learned weight per group, into a compatibility score. The highest score is the answer, and the handful of concepts that produced it is the explanation. That is exactly the PullUps table in the viewer.</p>
+      </div>
     </div>
-    <div class="ideas">
-      <div class="idea">
-        <div class="n">D1</div>
-        <h3>Trajectories are first-class concepts</h3>
-        <p>Trajectory concepts are clusters of optical-flow trajectories mined from training videos. No pose annotation, no language description of motion, so any moving entity can become a concept.</p>
-      </div>
-      <div class="idea">
-        <div class="n">D2</div>
-        <h3>Dynamic and static evidence are typed</h3>
-        <p>Trajectory concepts carry dynamic evidence; object and scene concepts, obtained with a Video-LLM and soft video–text pseudo-labels, carry static context. Vocabularies adapt per dataset; the interface does not.</p>
-      </div>
-      <div class="idea">
-        <div class="n">D3</div>
-        <h3>Task-general consumption</h3>
-        <p>Trajectory concepts have no names, so for VQA their text-side relevance is learned from answer supervision with an InfoNCE alignment instead of text–concept similarity. The same <b>z</b> serves both tasks.</p>
+    <div class="fig" style="margin-top:16px;">
+      <h3 style="font-size:1.1rem; font-weight:700; margin:2px 0 10px;">Where the trajectory concepts come from</h3>
+      <img src="static/images/concept_discovery.png" alt="Trajectory concept discovery pipeline: optical-flow trajectory extraction, trajectory filtering, clustering into trajectory concepts, and video-side soft concept labeling.">
+      <div class="steps">
+        <div><b>Extract</b>Estimate dense optical flow on training videos and trace a trajectory from each seed pixel over a short clip around every temporal segment.</div>
+        <div><b>Filter</b>Keep foreground trajectories with large motion magnitude; drop weak or background motion.</div>
+        <div><b>Cluster</b>Pool trajectories over the training set and cluster them (FINCH). Each cluster is one trajectory concept; its medoid is the visual prototype.</div>
+        <div><b>Soft-label</b>Count each video's trajectories per cluster and normalize into a soft presence label that trains the trajectory part of the concept layer. Object and scene concepts come from a Video-LLM with video–text pseudo-labels.</div>
       </div>
     </div>
-    <details class="more">
-      <summary>How trajectory concepts are discovered</summary>
-      <div class="fig">
-        <img src="static/images/concept_discovery.png" alt="Trajectory concept discovery pipeline: optical-flow trajectory extraction, trajectory filtering, clustering into trajectory concepts, and video-side soft concept labeling.">
-        <div class="steps">
-          <div><b>Extract</b>Estimate dense optical flow; trace a trajectory from each seed pixel over an L-frame clip around every temporal segment.</div>
-          <div><b>Filter</b>Keep foreground trajectories with large motion magnitude; drop weak or noisy motion.</div>
-          <div><b>Cluster</b>Pool trajectories over the training set and cluster with FINCH. Each cluster is a concept; its medoid is the visual prototype.</div>
-          <div><b>Soft-label</b>Count each video's trajectories per cluster and normalize into a soft presence label used to train the concept layer.</div>
-        </div>
-      </div>
-    </details>
   </div>
 </section>
 
@@ -436,12 +838,13 @@
     <div class="tiles">
       <div class="tile"><div class="big acc">−1.0<small>pt</small></div><p>Average action-recognition trade-off against the non-interpretable baseline; best interpretable method on KTH and Chiral SSv2.</p></div>
       <div class="tile"><div class="big">+0.4<small>pt</small></div><p>Average VQA change against the baseline. TraCE is the only concept-based method that supports VQA at all.</p></div>
-      <div class="tile"><div class="big">93<small>%</small></div><p>of user-study responses prefer TraCE explanations over DANCE and a language-based CBM; trajectory concepts rate 4.2 / 5 for coherence.</p></div>
+      <div class="tile"><div class="big">4.2<small>/ 5</small></div><p>Coherence rating people give trajectory concepts, against 2.5 for pose-sequence and 2.2 for language concepts. <a href="#results" data-tab="us" class="tilelink">See the user study</a></p></div>
     </div>
     <div class="panel">
       <div class="tabs" role="tablist">
         <button class="tab on" data-t="ar" role="tab">Action recognition</button>
         <button class="tab" data-t="vqa" role="tab">Video QA</button>
+        <button class="tab" data-t="us" role="tab">User study</button>
       </div>
       <div class="tpane on" data-t="ar">
         <div class="twrap">
@@ -464,11 +867,18 @@
             <thead><tr><th>Method</th><th>NTU RGB+D Mutual</th><th>Chiral SSv2</th><th>UCF-101</th><th>TOMATO</th><th>STAR</th><th class="avg">Avg.</th></tr></thead>
             <tbody>
               <tr><td>Baseline w/o interpretability</td><td>97.4<span class="sd">±0.1</span></td><td>82.6<span class="sd">±0.2</span></td><td>99.8<span class="sd">±0.0</span></td><td>35.9<span class="sd">±2.2</span></td><td>54.5<span class="sd">±0.4</span></td><td class="avg">74.0</td></tr>
-              <tr class="ours"><td>TraCE</td><td>97.1<span class="sd">±0.3</span></td><td>82.6<span class="sd">±0.6</span></td><td>99.7<span class="sd">±0.1</span></td><td>37.0<span class="sd">±1.7</span></td><td>55.4<span class="sd">±1.2</span></td><td class="avg">74.4</td></tr>
+              <tr class="sep"><td>MM-CBM w/ language motion concepts</td><td><span class="best">97.6</span><span class="sd">±0.1</span></td><td>82.0<span class="sd">±0.4</span></td><td><span class="best">99.7</span><span class="sd">±0.1</span></td><td>31.7<span class="sd">±3.6</span></td><td><span class="best">56.5</span><span class="sd">±0.5</span></td><td class="avg">73.5</td></tr>
+              <tr><td>MM-CBM w/ pose-sequence concepts</td><td><span class="best">97.6</span><span class="sd">±0.1</span></td><td>82.3<span class="sd">±0.6</span></td><td><span class="best">99.7</span><span class="sd">±0.1</span></td><td>28.7<span class="sd">±7.0</span></td><td>55.9<span class="sd">±0.7</span></td><td class="avg">72.8</td></tr>
+              <tr><td>SpLiCE adaptation</td><td>53.0</td><td>57.3</td><td>86.7</td><td>22.4</td><td>49.2</td><td class="avg">53.7</td></tr>
+              <tr class="ours"><td>TraCE</td><td>97.1<span class="sd">±0.3</span></td><td><span class="best">82.6</span><span class="sd">±0.6</span></td><td><span class="best">99.7</span><span class="sd">±0.1</span></td><td><span class="best">37.0</span><span class="sd">±1.7</span></td><td>55.4<span class="sd">±1.2</span></td><td class="avg"><span class="best">74.4</span></td></tr>
             </tbody>
           </table>
         </div>
-        <p class="cap">Top-1 accuracy (%), mean ± std over five seeds. NTU, Chiral SSv2, and UCF-101 use multiple-choice VQA reformulations of the action labels; TOMATO and STAR are native VQA benchmarks. TraCE improves on both native benchmarks and on Chiral SSv2.</p>
+        <p class="cap">Answer accuracy (%), mean ± std over five seeds (SpLiCE: single run). Underline: best among concept-based methods. The two MM-CBM variants keep the same concept-space matching design as TraCE but swap in language-derived motion concepts (LF-CBM) or pose-sequence concepts (DANCE); SpLiCE is adapted to question-conditioned scoring. NTU, Chiral SSv2, and UCF-101 are multiple-choice reformulations of action labels; TOMATO and STAR are native VQA benchmarks. Differences among the top rows are within seed variance except on TOMATO.</p>
+      </div>
+      <div class="tpane" data-t="us">
+        <img src="static/images/user_study.png" alt="User study: pairwise preference bars favoring TraCE over SALF-CBM, a language-based CBM, and DANCE; concept-level coherence ratings of 4.2 for TraCE, 2.5 for DANCE, 2.2 for language-based." style="width:100%; max-width:900px; margin:6px auto 0;">
+        <p class="cap">Two studies on motion-focused subsets of NTU RGB+D Mutual and Chiral SSv2. <b>(a)</b> In pairwise comparisons, over 93% of responses prefer TraCE explanations to DANCE and a language-based CBM, and about 78% prefer TraCE to SALF-CBM. <b>(b)</b> Asked how well a concept matches the motion shared by its top-activating clips, participants rate trajectory concepts 4.2 / 5, versus 2.5 for pose-sequence and 2.2 for language-derived motion concepts. In a separate blinded study in the VQA setting (50 participants, 250 ratings per comparison, both models correct on every item), participants prefer TraCE explanations in <b>70.4%</b> of comparisons against language-derived motion concepts and <b>85.6%</b> against pose-sequence concepts.</p>
       </div>
     </div>
   </div>
@@ -479,55 +889,20 @@
   <div class="wrap">
     <div class="head">
       <h2>The concepts actually drive the prediction</h2>
-      <p>Removing the top-ranked trajectory concepts breaks predictions; removing random ones does not. Predictions also follow the motion when the video is reversed or rotated, and trajectory concepts transfer across object categories and domains.</p>
+      <p>Removing the top-ranked trajectory concepts breaks predictions; removing random ones does not. The numbers below are the sanity checks behind that claim; full tables are in the paper.</p>
     </div>
     <div class="fig">
       <img src="static/images/deletion_curve.png" alt="Concept intervention curves on NTU RGB+D Mutual, Chiral SSv2, KTH, and UCF-101: accuracy drops sharply when top-k trajectory concepts are removed, but not for random or bottom-k removal.">
       <p class="cap"><b>Concept intervention curves.</b> Accuracy as concepts are removed in Top-k, random, and Bottom-k order of contribution, for TraCE and a language-based CBM. The separation is weaker on UCF-101, where many classes are recognizable from static cues alone.</p>
     </div>
-    <div class="two" style="margin-top:16px;">
-      <div class="fig">
-        <img src="static/images/intervention.png" alt="Concept-level intervention: deactivating a mismatched leftward-motion concept changes the prediction from 'Folding something' to the correct 'Moving something down'." style="width:100%; max-width:620px; margin:0 auto;">
-        <p class="cap"><b>Explanations are actionable.</b> The model misreads <i>Moving [something] down</i> as <i>Folding [something]</i> because of a leftward-motion concept. Deactivating that one concept corrects the prediction.</p>
-      </div>
-      <div class="stack">
-        <div class="mini">
-          <h3>Prediction flips under trajectory concept removal</h3>
-          <table>
-            <tr><th>Removed concepts</th><th>Flip rate</th></tr>
-            <tr><td>Top-10 by contribution</td><td class="hl">39.0%</td></tr>
-            <tr><td>Random 10</td><td>2.2%</td></tr>
-          </table>
-        </div>
-        <div class="mini">
-          <h3>Consistency under motion perturbation</h3>
-          <table>
-            <tr><th>Chiral SSv2</th><th>Acc.</th></tr>
-            <tr><td>Original</td><td>82.9</td></tr>
-            <tr><td>Temporal reverse</td><td class="hl">79.2</td></tr>
-            <tr><td>90° rotation</td><td class="hl">63.1</td></tr>
-          </table>
-          <p>Each perturbation maps a direction-sensitive label to its counterpart; accuracy is measured against the transformed label.</p>
-        </div>
-        <div class="mini">
-          <h3>Beyond object and dataset shortcuts</h3>
-          <table>
-            <tr><th>Trajectory-only</th><th>Disjoint obj.</th><th>SSv2→TOMATO</th></tr>
-            <tr><td>Baseline</td><td>89.5</td><td>41.5</td></tr>
-            <tr><td>TraCE</td><td class="hl">94.4</td><td class="hl">43.1</td></tr>
-          </table>
-          <p>Object categories disjoint between train and test (Something-Else), and zero-shot transfer to TOMATO.</p>
-        </div>
-      </div>
+    <div class="strip">
+      <div><div class="n">39<small>%</small></div><div class="d">of predictions flip when the top-10 trajectory concepts are removed; <b>2%</b> for ten random concepts.</div></div>
+      <div><div class="n">79.2</div><div class="d">accuracy under temporal reversal on Chiral SSv2 (82.9 original); 63.1 under 90° rotation. Predictions follow the motion, not the appearance.</div></div>
+      <div><div class="n">94.4</div><div class="d">on Something-Else with train/test object categories disjoint, vs 89.5 for the baseline; 43.1 vs 41.5 when transferred to TOMATO without target training.</div></div>
     </div>
-    <div class="two us">
-      <div class="fig">
-        <img src="static/images/user_study.png" alt="User study: pairwise preference bars favoring TraCE; concept-level ratings 4.2 for TraCE, 2.5 for DANCE, 2.2 for language-based.">
-      </div>
-      <div class="mini">
-        <h3>Do people find the concepts interpretable?</h3>
-        <p style="font-size:14.5px; color:var(--body)">Two studies on motion-focused subsets of NTU RGB+D Mutual and Chiral SSv2. In pairwise comparisons, over 93% of responses prefer TraCE explanations to DANCE and a language-based CBM, and about 78% prefer TraCE to SALF-CBM. Asked how well a concept matches the motion shared by its top-activating clips, participants rate trajectory concepts <b>4.2 / 5</b>, versus 2.5 for pose-sequence and 2.2 for language-derived motion concepts.</p>
-      </div>
+    <div class="fig" style="margin-top:16px;">
+      <img src="static/images/intervention.png" alt="Concept-level intervention: deactivating a mismatched leftward-motion concept changes the prediction from 'Folding something' to the correct 'Moving something down'." style="width:100%; max-width:680px; margin:0 auto;">
+      <p class="cap" style="max-width:680px; margin-left:auto; margin-right:auto;"><b>Explanations are actionable.</b> The model misreads <i>Moving [something] down</i> as <i>Folding [something]</i> because of a leftward-motion concept. Deactivating that one concept corrects the prediction.</p>
     </div>
   </div>
 </section>
@@ -559,19 +934,21 @@
         <div class="wt">DANCE: Disentangled Concepts Speak Louder Than Words</div>
         <div class="wd">Explainable video action recognition with disentangled motion, object, and scene concepts.</div>
       </a>
-      <a class="work" href="https://arxiv.org/abs/2508.10896">
-        <div class="wv">ICCV 2025 · HIGHLIGHT</div>
-        <div class="wt">ESSENTIAL: Episodic and Semantic Memory Integration for Video Class-Incremental Learning</div>
-        <div class="wd">Memory integration for continual learning on video.</div>
+      <a class="work" href="https://jong980812.github.io/which-way-did-it-move/">
+        <div class="wv">NEURIPS 2026</div>
+        <div class="wt">Which Way Did It Move? Diagnosing and Overcoming Directional Motion Blindness in Video-LLMs</div>
+        <div class="wd">Video-LLMs often cannot tell left from right; a diagnosis and a fix.</div>
       </a>
-      <a class="work" href="https://arxiv.org/abs/2311.18825">
-        <div class="wv">NEURIPS 2023</div>
-        <div class="wt">CAST: Cross-Attention in Space and Time for Video Action Recognition</div>
-        <div class="wd">Balancing spatial and temporal understanding with cross-attention.</div>
+      <a class="work" href="https://mreraser.github.io/EVIDENT_project_page/">
+        <div class="wv">NEURIPS 2026</div>
+        <div class="wt">EVIDENT: Routing MLLM Adaptation through Entity-Grounded Visual Evidence for Cross-Domain Video Temporal Grounding</div>
+        <div class="wd">Entity-grounded visual evidence for temporal grounding across domains.</div>
       </a>
     </div>
   </div>
 </section>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Enlarged figure"><img alt=""></div>
 
 <footer>
   <div class="wrap">
@@ -598,12 +975,15 @@
     });
   })();
   // Results tabs
-  document.querySelectorAll('.tab').forEach(function (b) {
+  document.querySelectorAll('.tab[data-t]').forEach(function (b) {
     b.addEventListener('click', function () {
       var t = b.dataset.t;
-      document.querySelectorAll('.tab').forEach(function (x) { x.classList.toggle('on', x === b); });
+      document.querySelectorAll('.tab[data-t]').forEach(function (x) { x.classList.toggle('on', x === b); });
       document.querySelectorAll('.tpane').forEach(function (p) { p.classList.toggle('on', p.dataset.t === t); });
     });
+  });
+  document.querySelectorAll('.tilelink').forEach(function (a) {
+    a.addEventListener('click', function () { var t = document.querySelector('.tab[data-t="' + a.dataset.tab + '"]'); if (t) t.click(); });
   });
   // Nav highlight
   (function () {
@@ -615,6 +995,58 @@
       links.forEach(function (a) { a.classList.toggle('active', a === cur); });
     }
     window.addEventListener('scroll', upd, { passive: true }); upd();
+  })();
+
+
+  // Method stepper (animated scene)
+  (function () {
+    var root = document.getElementById('stepper'); if (!root) return;
+    var scene = document.getElementById('scene'), els = scene.querySelectorAll('.el'), caps = root.querySelectorAll('.st-cap'), dotsEl = document.getElementById('st-dots');
+    var titles = ["Start from a black-box video model", "Insert a concept layer", "Type it: trajectory, object, scene", "Predict, and read the contributions off the concepts", "For VQA, bring in the question", "Put the answers in the same concept space", "Compare concept by concept", "Score sparsely, pick the answer, keep the receipt"];
+    var n = titles.length, i = 0, timer = null, DUR = 8000;
+    for (var k = 0; k < n; k++) { var d = document.createElement('button'); d.className = 'st-dot'; d.setAttribute('aria-label', 'Step ' + (k + 1)); d.dataset.i = k; d.addEventListener('click', function () { go(+this.dataset.i, true); }); dotsEl.appendChild(d); }
+    var dots = dotsEl.children;
+    function render() {
+      var step = i + 1; scene.dataset.step = step;
+      els.forEach(function (el) { var f = +el.dataset.from, t = el.dataset.to ? +el.dataset.to : 99; el.classList.toggle('vis', step >= f && step <= t); });
+      for (var k = 0; k < n; k++) { caps[k].classList.toggle('on', k === i); dots[k].classList.toggle('on', k === i); dots[k].classList.toggle('done', k < i); dots[k].classList.toggle('playing', k === i && !!timer); }
+      document.getElementById('st-n').textContent = step; document.getElementById('st-title').textContent = titles[i];
+      document.getElementById('st-prev').disabled = i === 0; document.getElementById('st-next').disabled = i === n - 1 && !timer;
+    }
+    function go(j, user) { i = (j + n) % n; if (user && timer) stop(); render(); }
+    function start() { timer = setInterval(function () { go(i + 1); }, DUR); document.getElementById('st-play').setAttribute('aria-pressed', 'true'); document.getElementById('st-play').textContent = 'Pause'; root.style.setProperty('--dur', DUR + 'ms'); render(); }
+    function stop() { clearInterval(timer); timer = null; document.getElementById('st-play').setAttribute('aria-pressed', 'false'); document.getElementById('st-play').textContent = 'Auto-play'; render(); }
+    document.getElementById('st-prev').addEventListener('click', function () { go(i - 1, true); });
+    document.getElementById('st-next').addEventListener('click', function () { go(i + 1, true); });
+    document.getElementById('st-play').addEventListener('click', function () { timer ? stop() : start(); });
+    root.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') { e.preventDefault(); go(i + 1, true); } if (e.key === 'ArrowLeft') { e.preventDefault(); go(i - 1, true); } });
+    document.addEventListener('visibilitychange', function () { if (document.hidden && timer) stop(); });
+    // start auto-play once when the stepper scrolls into view, so the build-up is seen
+    if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var seen = false, io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting && !seen) { seen = true; start(); io.disconnect(); } }); }, { threshold: 0.6 });
+      io.observe(root);
+    }
+    render();
+  })();
+  // Lightbox for wide figures
+  (function () {
+    var lb = document.getElementById('lightbox'), im = lb.querySelector('img');
+    document.querySelectorAll('img.zoomable').forEach(function (z) {
+      z.addEventListener('click', function () { im.src = z.dataset.full || z.src; lb.classList.add('on'); document.body.style.overflow = 'hidden'; });
+    });
+    function close() { lb.classList.remove('on'); document.body.style.overflow = ''; }
+    lb.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lb.classList.contains('on')) close(); });
+  })();
+  // Arrow keys move between examples when the viewer is focused
+  (function () {
+    var thumbs = [].slice.call(document.querySelectorAll('.thumb'));
+    thumbs.forEach(function (t, i) {
+      t.addEventListener('keydown', function (e) {
+        var j = e.key === 'ArrowDown' || e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? i - 1 : -1;
+        if (j >= 0 && j < thumbs.length) { e.preventDefault(); thumbs[j].click(); thumbs[j].focus(); }
+      });
+    });
   })();
   function copyBib(btn) {
     navigator.clipboard.writeText(document.getElementById('bib').innerText).then(function () {
