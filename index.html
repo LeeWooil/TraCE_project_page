@@ -739,20 +739,18 @@
               <path d="M705 262 V306 Q705 316 695 316 H650 Q640 316 640 326 V344" class="fl-t" fill="none"/>
               <path d="M705 262 V306 Q705 316 715 316 H810 Q820 316 820 326 V344" class="fl-o" fill="none"/>
               <path d="M705 262 V306 Q705 316 715 316 H990 Q1000 316 1000 326 V344" class="fl-s" fill="none"/>
-              <text x="540" y="380" class="h" text-anchor="end">Top-3 concepts</text>
-              <text x="540" y="400" class="sub" text-anchor="end">for this prediction</text>
-              <rect x="556" y="352" width="168" height="66" rx="12" class="node" style="stroke:#2F7FD1"/>
-              <image href="static/images/concept_a1.svg" x="562" y="359" width="52" height="52"/>
-              <text x="622" y="380" class="chip t">Trajectory</text>
-              <text x="622" y="400" class="chipv">goalkeeper’s dive</text>
-              <rect x="621" y="352" width="0" height="0"/>
-              <rect x="736" y="352" width="168" height="66" rx="12" class="node" style="stroke:#D64545"/>
-              <text x="820" y="380" class="chip o" text-anchor="middle">Object</text>
-              <text x="820" y="400" class="chipv" text-anchor="middle">“Soccer player”</text>
-              <rect x="916" y="352" width="168" height="66" rx="12" class="node" style="stroke:#2E9E5B"/>
-              <text x="1000" y="380" class="chip s" text-anchor="middle">Scene</text>
-              <text x="1000" y="400" class="chipv" text-anchor="middle">“Soccer field”</text>
-              <text x="820" y="450" class="note" text-anchor="middle">contribution of a concept = its activation × its classifier weight</text>
+              <text x="540" y="388" class="h" text-anchor="end">Top-3 concepts</text>
+              <text x="540" y="408" class="sub" text-anchor="end">for this prediction</text>
+              <rect x="556" y="352" width="168" height="82" rx="12" class="node" style="stroke:#2F7FD1"/>
+              <text x="640" y="374" class="chip t" text-anchor="middle">Trajectory</text>
+              <image href="static/images/concept_a1.svg" x="614" y="379" width="52" height="50"/>
+              <rect x="736" y="352" width="168" height="82" rx="12" class="node" style="stroke:#D64545"/>
+              <text x="820" y="386" class="chip o" text-anchor="middle">Object</text>
+              <text x="820" y="406" class="chipv" text-anchor="middle">“Soccer ball”</text>
+              <rect x="916" y="352" width="168" height="82" rx="12" class="node" style="stroke:#2E9E5B"/>
+              <text x="1000" y="386" class="chip s" text-anchor="middle">Scene</text>
+              <text x="1000" y="406" class="chipv" text-anchor="middle">“Soccer field”</text>
+              <text x="820" y="464" class="note" text-anchor="middle">contribution of a concept = its activation × its classifier weight</text>
             </g>
           </g>
 
@@ -834,7 +832,7 @@
         <p class="st-cap on">A frozen video encoder turns a clip into a feature vector and a classifier turns that into a label. It works, but nothing in between has a meaning you can point at: you cannot ask which motion the decision relied on.</p>
         <p class="st-cap">TraCE puts a concept layer between the features and the classifier. Each of its units stands for one concept, and the classifier is only allowed to see those units. The explanation now lives inside the model rather than in a post-hoc heatmap.</p>
         <p class="st-cap">The layer is split into three typed groups. <span class="typed t">Trajectory</span> concepts carry dynamic evidence, <span class="typed o">Object</span> and <span class="typed s">Scene</span> concepts carry static context. Keeping them separate is what lets TraCE say <i>which source</i> of evidence a prediction used. Where the trajectory concepts themselves come from is shown in the card below.</p>
-        <p class="st-cap">A clip flows through, concepts light up, and the sparse linear classifier sums them into a prediction. Because the classifier is linear, each concept's contribution is simply its activation times its weight. The three strongest here are a diving trajectory, the object “soccer player”, and the scene “soccer field”: the same kind of explanation you saw in the viewer above.</p>
+        <p class="st-cap">A clip flows through, concepts light up, and the sparse linear classifier sums them into a prediction. Because the classifier is linear, each concept's contribution is simply its activation times its weight. The three strongest here are a diving trajectory, the object “soccer ball”, and the scene “soccer field”: the same kind of explanation you saw in the viewer above.</p>
         <p class="st-cap">Video question answering adds a second input. The question is paired with each candidate answer and encoded by a frozen text encoder, giving one text feature per candidate. The video side is left exactly as it was; only the classifier is set aside.</p>
         <p class="st-cap">A text concept layer maps each candidate into the same trajectory, object, and scene concepts, in the same order, as the video side. The result is a relevance vector per candidate: which concepts that answer would need to be true. Trajectory concepts have no names, so this part is learned from answer supervision rather than from text similarity.</p>
         <p class="st-cap">For each candidate, the video's activations and the answer's relevance are compared unit by unit. A concept counts only if the video shows it <i>and</i> the answer needs it, so most entries stay silent and a few light up: here a leftward trajectory and the player object for “Left”.</p>
