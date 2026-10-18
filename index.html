@@ -284,7 +284,7 @@
     /* ---- method stepper ---- */
     .stepper { padding: 20px 22px 18px; outline: none; }
     .stepper:focus-visible { box-shadow: var(--shadow), 0 0 0 3px var(--accent-soft); }
-    .st-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+    .st-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 10px; flex-wrap: wrap; }
     .st-count { font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.04em; color: var(--accent-deep); background: var(--accent-soft); border-radius: 999px; padding: 3px 10px; flex: none; }
     .st-title { font-size: 1.3rem; font-weight: 700; margin: 0; }
     .st-stage { position: relative; background: #fff; border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
@@ -298,7 +298,7 @@
     .st-maplbl { position: absolute; left: 8px; bottom: 6px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.03em; color: var(--mute); background: rgba(255,255,255,0.85); padding: 2px 6px; border-radius: 4px; }
     .st-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 18px; opacity: 0; transition: opacity 320ms ease-out; }
     .st-img.on { opacity: 1; }
-    .st-foot { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
+    .st-foot { display: flex; align-items: center; gap: 12px; margin: 0 0 12px; }
     .st-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--rule); background: #fff; color: var(--ink); font-size: 16px; cursor: pointer; display: grid; place-items: center; transition: background 140ms ease, transform 140ms ease; }
     .st-btn:hover { background: var(--bg); }
     .st-btn:active { transform: scale(0.94); }
@@ -321,7 +321,6 @@
 
     /* scene elements */
     #row1 { transition: transform 560ms cubic-bezier(.4,0,.2,1); }
-    #scene[data-step="1"] #row1, #scene[data-step="2"] #row1, #scene[data-step="3"] #row1 { transform: translateY(150px); }
     #scene .el { opacity: 0; transition: opacity 460ms ease-out, transform 460ms ease-out; transform: translateY(8px); }
     #scene .el.vis { opacity: 1; transform: none; }
     #scene .node { fill: #fff; stroke: #C9D2DD; stroke-width: 1.5; filter: url(#sh); }
@@ -330,17 +329,17 @@
     #scene .bdg-f rect { fill: #EEF1F5; } #scene .bdg-f text { fill: #626B7A; }
     #scene .bdg-t rect { fill: #E8F0FC; } #scene .bdg-t text { fill: #1F4FA6; }
     #scene .bdg-f text, #scene .bdg-t text { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.06em; font-weight: 500; }
-    #scene .lbl { font-size: 13.5px; fill: #4E5767; }
-    #scene .note { font-size: 13px; fill: #7F8998; font-style: italic; }
-    #scene .box { font-size: 16px; font-weight: 600; fill: #171A21; font-family: var(--display); letter-spacing: -0.01em; }
-    #scene .box.t { fill: #1F5FA8; } #scene .box.o { fill: #B83A3A; } #scene .box.s { fill: #237A47; }
-    #scene .sub { font-size: 13px; fill: #4E5767; }
+    #scene .lbl { font-size: 14px; fill: #353C49; }
+    #scene .note { font-size: 14px; fill: #4A5262; font-style: italic; }
+    #scene .box { font-size: 16.5px; font-weight: 700; fill: #12151B; font-family: var(--display); letter-spacing: -0.01em; }
+    #scene .box.t { fill: #174F91; } #scene .box.o { fill: #A32F2F; } #scene .box.s { fill: #1C6B3D; }
+    #scene .sub { font-size: 13.5px; fill: #353C49; }
     #scene .h { font-size: 15px; font-weight: 700; fill: #171A21; font-family: var(--display); }
     #scene .pred { font-size: 18px; font-weight: 700; fill: #171A21; font-family: var(--display); letter-spacing: -0.01em; }
     #scene .q { font-size: 13px; fill: #171A21; font-weight: 600; }
     #scene .cand { font-size: 12.5px; fill: #171A21; font-weight: 600; font-family: var(--display); }
     #scene .chip { font-size: 13px; font-weight: 700; font-family: var(--display); } #scene .chip.t { fill: #1F5FA8; } #scene .chip.o { fill: #B83A3A; } #scene .chip.s { fill: #237A47; }
-    #scene .chipv { font-size: 13px; fill: #4E5767; }
+    #scene .chipv { font-size: 13.5px; fill: #353C49; }
     #scene .fl { stroke: #7B8794; stroke-width: 1.8; fill: none; marker-end: url(#m-g); }
     #scene .fl-t { stroke: #2F7FD1; stroke-width: 1.8; fill: none; marker-end: url(#m-t); }
     #scene .fl-o { stroke: #D64545; stroke-width: 1.8; fill: none; marker-end: url(#m-o); }
@@ -638,6 +637,12 @@
         <div class="st-count"><span id="st-n">1</span> / 8</div>
         <h3 class="st-title" id="st-title">Start from a black-box video model</h3>
       </div>
+      <div class="st-foot">
+        <button class="st-btn" id="st-prev" aria-label="Previous step">←</button>
+        <div class="st-dots" id="st-dots" role="tablist"></div>
+        <button class="st-btn" id="st-next" aria-label="Next step">→</button>
+        <button class="st-play" id="st-play" aria-pressed="false">Auto-play</button>
+      </div>
 
       <div class="st-stage" id="st-stage">
         <svg id="scene" viewBox="0 0 1200 620" data-step="1" role="img" aria-label="Animated diagram of the TraCE architecture">
@@ -784,16 +789,16 @@
             <text x="566" y="447" class="box o" text-anchor="middle">Object</text>
             <rect x="486" y="484" width="160" height="48" rx="10" class="node" style="fill:#E9F6EE; stroke:#2E9E5B"/>
             <text x="566" y="513" class="box s" text-anchor="middle">Scene</text>
-            <text x="566" y="556" class="lbl" text-anchor="middle">text concept layer</text>
-            <text x="566" y="572" class="lbl" text-anchor="middle">same concepts, same order</text>
+            <text x="560" y="556" class="lbl" text-anchor="middle">text concept layer</text>
+            <text x="560" y="572" class="lbl" text-anchor="middle">same concepts, same order</text>
             <path d="M654 376 H684" class="fl-t"/>
             <path d="M654 442 H684" class="fl-o"/>
             <path d="M654 508 H684" class="fl-s"/>
             <rect x="698" y="336" width="30" height="196" rx="15" class="pill" style="stroke:#E2B53A"/>
             <rect x="694" y="340" width="30" height="196" rx="15" class="pill" style="stroke:#E2B53A"/>
             <rect x="690" y="344" width="30" height="196" rx="15" class="pill" style="stroke:#E2B53A"/><circle class="rel rel1" cx="705" cy="359.0" r="8" fill="#2F7FD1"/><circle class="rel rel2" cx="705" cy="392.2" r="8" fill="#9DC3EC"/><circle class="rel rel3" cx="705" cy="425.4" r="8" fill="#F0A6A6"/><circle class="rel rel4" cx="705" cy="458.6" r="8" fill="#D64545"/><circle class="rel rel5" cx="705" cy="491.8" r="8" fill="#9ED9B2"/><circle class="rel rel6" cx="705" cy="525.0" r="8" fill="#9ED9B2"/>
-            <text x="705" y="564" class="lbl" text-anchor="middle">concept relevance</text>
-            <text x="705" y="580" class="lbl" text-anchor="middle">one per candidate</text>
+            <text x="718" y="564" class="lbl" text-anchor="middle">concept relevance</text>
+            <text x="718" y="580" class="lbl" text-anchor="middle">one per candidate</text>
             <path d="M566 286 V340" class="shared"/>
             <text x="580" y="318" class="note shared-t">one shared concept space</text>
           </g>
@@ -818,18 +823,12 @@
             <text x="950" y="282" class="cand">Left</text><rect x="1000" y="268" width="160" height="20" rx="5" fill="#E2B53A"/><text x="1152" y="282" class="cand" text-anchor="end" fill="#fff">2.38</text>
             <text x="950" y="314" class="cand">Center</text><rect x="1000" y="300" width="65" height="20" rx="5" fill="#F1D78A"/><text x="1072" y="314" class="cand">0.97</text>
             <text x="950" y="346" class="cand">Right</text><rect x="1000" y="332" width="52" height="20" rx="5" fill="#F7E7B3"/><text x="1059" y="346" class="cand">0.78</text>
-            <text x="950" y="392" class="pred">“Left”</text>
-            <circle cx="1014" cy="388" r="9" fill="#22A447"/><path d="M1009.5 388.5 l3 3 l6 -7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <text x="950" y="414" class="sub">the few concepts that built the score</text>
-            <text x="950" y="430" class="sub">are the explanation</text>
+            <text x="978" y="392" class="pred">“Left”</text>
+            <circle cx="1042" cy="388" r="9" fill="#22A447"/><path d="M1037.5 388.5 l3 3 l6 -7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="978" y="414" class="sub">the few concepts that</text>
+            <text x="978" y="431" class="sub">built the score are</text><text x="978" y="448" class="sub">the explanation</text>
           </g>
         </svg>
-      </div>
-      <div class="st-foot">
-        <button class="st-btn" id="st-prev" aria-label="Previous step">←</button>
-        <div class="st-dots" id="st-dots" role="tablist"></div>
-        <button class="st-btn" id="st-next" aria-label="Next step">→</button>
-        <button class="st-play" id="st-play" aria-pressed="false">Auto-play</button>
       </div>
       <div class="st-caps">
         <p class="st-cap on">A frozen video encoder turns a clip into a feature vector and a classifier turns that into a label. It works, but nothing in between has a meaning you can point at: you cannot ask which motion the decision relied on.</p>
@@ -1056,8 +1055,30 @@
       var step = i + 1; scene.dataset.step = step;
       els.forEach(function (el) { var f = +el.dataset.from, t = el.dataset.to ? +el.dataset.to : 99; el.classList.toggle('vis', step >= f && step <= t); });
       for (var k = 0; k < n; k++) { caps[k].classList.toggle('on', k === i); dots[k].classList.toggle('on', k === i); dots[k].classList.toggle('done', k < i); dots[k].classList.toggle('playing', k === i && !!timer); }
+      fit();
       document.getElementById('st-n').textContent = step; document.getElementById('st-title').textContent = titles[i];
       document.getElementById('st-prev').disabled = i === 0; document.getElementById('st-next').disabled = i === n - 1 && !timer;
+    }
+    // crop the diagram to what this step shows, so early steps don't float in empty space;
+    // the scale never changes, only the height of the stage
+    var vb = null, anim = null, reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function target() {
+      var y0 = 1e9, y1 = -1e9;
+      scene.querySelectorAll('.el.vis').forEach(function (el) { var b = el.getBBox(); if (b.height) { y0 = Math.min(y0, b.y); y1 = Math.max(y1, b.y + b.height); } });
+      if (y1 < y0) return [0, 620];
+      var pad = 34, h = Math.max(240, y1 - y0 + 2 * pad); return [y0 - pad - (h - (y1 - y0 + 2 * pad)) / 2, h];
+    }
+    function setVB(v) { scene.setAttribute('viewBox', '0 ' + v[0].toFixed(1) + ' 1200 ' + v[1].toFixed(1)); }
+    function fit() {
+      var to = target();
+      if (!vb || reduce) { vb = to; setVB(vb); return; }
+      var from = vb.slice(), t0 = performance.now(), D = 520;
+      cancelAnimationFrame(anim);
+      (function tick(now) {
+        var p = Math.min(1, (now - t0) / D), e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+        vb = [from[0] + (to[0] - from[0]) * e, from[1] + (to[1] - from[1]) * e]; setVB(vb);
+        if (p < 1) anim = requestAnimationFrame(tick);
+      })(t0);
     }
     function go(j, user) { i = (j + n) % n; if (user && timer) stop(); render(); }
     function start() { timer = setInterval(function () { go(i + 1); }, DUR); document.getElementById('st-play').setAttribute('aria-pressed', 'true'); document.getElementById('st-play').textContent = 'Pause'; root.style.setProperty('--dur', DUR + 'ms'); render(); }
