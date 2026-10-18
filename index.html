@@ -62,7 +62,9 @@
     .hero .card { background: var(--card); border-radius: 20px; box-shadow: var(--shadow); padding: 48px 40px 40px; text-align: center; }
     .venue { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.04em; color: var(--accent-deep); background: var(--accent-soft); border-radius: 999px; padding: 5px 14px; margin-bottom: 20px; }
     .venue i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block; }
-    .hero h1 { font-size: clamp(2.1rem, 4.5vw, 3.35rem); font-weight: 800; max-width: 900px; margin: 0 auto 20px; line-height: 1.15; }
+    .hero h1 { font-size: clamp(1.9rem, 4.1vw, 3.05rem); font-weight: 800; max-width: 1000px; margin: 0 auto 20px; line-height: 1.16; text-wrap: initial; }
+    .hero h1 .ln { display: block; }
+    @media (max-width: 640px) { .hero h1 { text-wrap: balance; } .hero h1 .ln { display: inline; } }
     .hero h1 .acr { color: var(--accent); }
     .authors { font-size: 18px; line-height: 1.8; max-width: 860px; margin: 0 auto; color: var(--ink); }
     .authors span { white-space: nowrap; }
@@ -83,9 +85,11 @@
 
     /* ---- section scaffold ---- */
     section.block { padding: 40px 0 8px; }
-    .head { max-width: 760px; margin-bottom: 22px; }
+    .head { max-width: 860px; margin-bottom: 22px; }
+    .head h2 .sub { display: block; font-size: 1.15rem; font-weight: 700; color: var(--mute); letter-spacing: -0.005em; margin-top: 6px; }
     .head h2 { font-size: 1.95rem; font-weight: 800; margin-bottom: 12px; }
-    .head p { color: var(--body); font-size: 18px; }
+    .head p { color: var(--body); font-size: 18px; text-wrap: pretty; }
+    p, .cap, figcaption { text-wrap: pretty; }
     .head p .hl { color: var(--accent-deep); font-weight: 600; }
     .panel { background: var(--card); border-radius: 18px; box-shadow: var(--shadow); padding: 24px; }
     .cap { font-size: 14.5px; color: var(--mute); line-height: 1.58; margin-top: 12px; }
@@ -100,7 +104,7 @@
     .stage .slide.on { display: block; }
     .stage .anim { position: relative; background: #fff; }
     .stage .anim img.static { width: 100%; display: block; }
-    .stage .anim img.clip { position: absolute; }
+    .stage .anim .clip { position: absolute; object-fit: fill; }
     .stage video { width: 100%; display: block; }
     .stage .tag { position: absolute; bottom: 12px; left: 12px; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.04em; color: #fff; background: rgba(16,20,28,0.6); padding: 4px 9px; border-radius: 6px; pointer-events: none; }
     .thumbs { display: flex; flex-direction: column; gap: 8px; }
@@ -156,6 +160,29 @@
     .tile .big small { font-size: 1rem; color: var(--mute); font-weight: 600; margin-left: 4px; letter-spacing: 0; }
     .tile .big.acc { color: var(--accent); }
     .tile p { font-size: 14.5px; color: var(--mute); margin: 8px 0 0; }
+    .rsum { display: grid; grid-template-columns: minmax(0,1.25fr) minmax(0,1fr); gap: 16px; margin-bottom: 18px; }
+    .rsum .eyebrow { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--light); margin-bottom: 14px; }
+    .tile.feat { padding: 24px 26px; border: 1.5px solid #CFDDF5; display: flex; flex-direction: column; }
+    .tile.feat p { margin-top: auto; }
+    .cbars { display: grid; gap: 18px; margin: 6px 0 22px; }
+    .cb, .pair { display: grid; grid-template-columns: 190px minmax(0,1fr) 44px; gap: 12px; align-items: center; }
+    .cb .nm, .pair .nm { font-size: 14.5px; color: var(--body); }
+    .cb .tr, .pair .tr { height: 12px; background: #EEF1F5; border-radius: 999px; overflow: hidden; }
+    .cb .tr i, .pair .tr i { display: block; height: 100%; width: var(--v); background: #B9C2CF; border-radius: 999px; }
+    .cb .vl, .pair .vl { font-family: var(--display); font-weight: 800; font-size: 17px; color: var(--mute); text-align: right; font-variant-numeric: tabular-nums; }
+    .cb.us .nm { color: var(--ink); font-weight: 600; }
+    .cb.us .tr { height: 16px; } .cb.us .tr i { background: var(--accent); }
+    .cb.us .vl { font-size: 1.9rem; color: var(--accent); letter-spacing: -0.02em; }
+    .acc-col { display: grid; gap: 16px; }
+    .tile.acc2 { padding: 18px 22px; }
+    .tile.acc2 .eyebrow { margin-bottom: 10px; }
+    .pair { grid-template-columns: 70px minmax(0,1fr) 40px; margin-top: 6px; }
+    .pair .tr { height: 8px; } .pair .vl { font-size: 15px; font-weight: 700; }
+    .pair.us .nm { color: var(--ink); font-weight: 600; } .pair.us .tr i { background: #7FA6E6; } .pair.us .vl { color: var(--ink); }
+    .tile.acc2 p { font-size: 14px; margin-top: 10px; }
+    .tile.feat p { font-size: 14.5px; }
+    @media (max-width: 900px) { .rsum { grid-template-columns: minmax(0,1fr); } .cb { grid-template-columns: 150px minmax(0,1fr) 40px; } }
+    @media (max-width: 560px) { .cb { grid-template-columns: minmax(0,1fr) 44px; } .cb .tr { grid-column: 1 / -1; grid-row: 2; } }
     .tabs { display: inline-flex; gap: 4px; background: #E9EDF3; padding: 4px; border-radius: 999px; margin-bottom: 14px; }
     .tab { font-family: var(--display); font-weight: 700; font-size: 14px; color: var(--mute); background: transparent; border: 0; border-radius: 999px; padding: 7px 16px; cursor: pointer; transition: background 140ms ease, color 140ms ease; }
     .tab.on { background: #fff; color: var(--ink); box-shadow: 0 1px 2px rgba(16,20,28,0.08); }
@@ -221,7 +248,7 @@
     .xp-pred .q { font-weight: 500; font-style: italic; color: var(--body); }
     .xp-pred .ok { width: 17px; height: 17px; border-radius: 50%; background: #22A447; color: #fff; display: inline-grid; place-items: center; font-size: 11px; font-weight: 800; vertical-align: -2px; margin-left: 6px; }
     .xp-video { background: #0E1218; border-radius: 12px; overflow: hidden; display: grid; place-items: center; }
-    .xp-video img { display: block; max-height: 340px; width: auto; max-width: 100%; }
+    .xp-video img, .xp-video video { display: block; max-height: 340px; width: auto; max-width: 100%; }
     .xp-foot { font-size: 14px; color: var(--mute); margin-top: 10px; }
     .xp-foot b { color: var(--ink); font-weight: 600; }
     .ranks { display: grid; gap: 10px; }
@@ -345,7 +372,7 @@
     .three .c { display: flex; flex-direction: column; }
     .why-ex { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: #fff; }
     .why-ex img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .why-ex.pose img { object-fit: contain; padding: 14px 16px 10px; }
+    .why-ex.pose img { object-fit: contain; }
     .why-tag { position: absolute; left: 10px; bottom: 10px; background: rgba(255,255,255,0.92); border-radius: 8px; padding: 3px 9px; font-size: 12.5px; font-style: italic; color: var(--ink); }
     .three .body { padding: 14px 18px 6px; }
     .three h3 .ours { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.05em; color: var(--accent-deep); background: var(--accent-soft); border-radius: 999px; padding: 2px 7px; margin-left: 4px; vertical-align: 2px; }
@@ -424,7 +451,7 @@
   <div class="wrap">
     <div class="card">
       <div class="venue"><i></i> NeurIPS 2026 · Poster</div>
-      <h1><span class="acr">TraCE</span>: Trajectory-Aware Concepts for Explainable Video Understanding</h1>
+      <h1><span class="ln"><span class="acr">TraCE</span>: Trajectory&#8209;Aware Concepts</span> <span class="ln">for Explainable Video Understanding</span></h1>
       <div class="authors">
         <span>Wooil Lee<sup>1,†</sup>,</span>
         <span>Junpyo Hong<sup>1,†</sup>,</span>
@@ -470,7 +497,7 @@
               <div class="xp-left">
                 <div class="xp-meta">NTU RGB+D MUTUAL · ACTION RECOGNITION</div>
                 <div class="xp-pred">Pred: <span class="q">“Pushing other person”</span><span class="ok">✓</span></div>
-                <div class="xp-video"><img src="static/videos/ar_a.gif" alt="Two people in an office; one pushes the other. Green and red chevron trails mark the pushing arm and the pushed person's displacement."></div>
+                <div class="xp-video"><video src="static/videos/ar_a.mp4" autoplay muted loop playsinline preload="auto" aria-label="Two people in an office; one pushes the other. Green and red chevron trails mark the pushing arm and the pushed person's displacement."></video></div>
                 <div class="xp-foot"><b>(a) Multi-agent interaction.</b> Rank 1 follows the pushing arm; Rank 2 follows the other person being displaced. Both sources are explicit.</div>
               </div>
               <div class="ranks">
@@ -486,7 +513,7 @@
               <div class="xp-left">
                 <div class="xp-meta">CHIRAL SSV2 · ACTION RECOGNITION</div>
                 <div class="xp-pred">Pred: <span class="q">“Moving [something] and [something] closer to each other”</span><span class="ok">✓</span></div>
-                <div class="xp-video"><img src="static/videos/ar_b.gif" alt="A hand slides a cup and a lid toward each other on a table; chevron trails follow the two objects."></div>
+                <div class="xp-video"><video src="static/videos/ar_b.mp4" autoplay muted loop playsinline preload="auto" aria-label="A hand slides a cup and a lid toward each other on a table; chevron trails follow the two objects."></video></div>
                 <div class="xp-foot"><b>(b) Object-centric dynamics.</b> The body is barely in frame. The top concepts follow the two objects being brought together; there is no joint to attach this motion to.</div>
               </div>
               <div class="ranks">
@@ -500,7 +527,7 @@
           <div class="slide" data-k="c">
             <div class="anim">
               <img class="static" src="static/images/vqa_static.png" alt="VQA explanation: rows are the top-3 video-side trajectory concepts, columns are answer candidates PlayTabla, PullUps, Diving, MilParade; the correct answer PullUps gets the highest concept matching score, 40.5.">
-              <img class="clip" src="static/videos/vqa.gif" alt="" style="left:1.33%; top:28.86%; width:28.46%; height:49.69%;">
+              <video class="clip" src="static/videos/vqa.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true" style="left:1.33%; top:28.86%; width:28.46%; height:49.69%;"></video>
             </div>
             <span class="tag">VIDEO QUESTION ANSWERING · UCF-101</span>
           </div>
@@ -559,7 +586,7 @@
 <section class="block" id="why">
   <div class="wrap">
     <div class="head">
-      <h2>Why trajectories? Motion-source under-specification</h2>
+      <h2>Why trajectories?<span class="sub">Motion&#8209;source under&#8209;specification</span></h2>
       <p>Motion in a video comes from actors, manipulated objects, and interactions among entities, each with different semantics. Same clip, same prediction, three ways of explaining it.</p>
     </div>
     <div class="why-strip">
@@ -580,7 +607,7 @@
         <img class="why-bubble" src="static/images/why_bubble_amb.png" alt="A puzzled viewer: 'But what is the model actually relying on?' Source-ambiguous.">
       </div>
       <div class="c inc">
-        <div class="why-ex pose"><img src="static/images/why_pose.png" alt="A pose-based concept: the skeleton of one player over time."></div>
+        <div class="why-ex pose"><img src="static/videos/why_pose.gif" alt="A pose-based concept: the kicker's skeleton running up and striking the ball."></div>
         <div class="body">
           <h3><span class="dot" style="background:var(--obj)"></span>Pose-based concepts</h3>
           <p>One person's body motion becomes explicit, but the vocabulary is defined over human joints. The ball's flight and the other players have no concept to land on.</p>
@@ -832,13 +859,33 @@
 <section class="block" id="results">
   <div class="wrap">
     <div class="head">
-      <h2>Interpretability at a small, measured cost</h2>
+      <h2>Better explanations, almost no accuracy lost</h2>
       <p>Six benchmarks, two tasks, five seeds. Same frozen backbone within each task: VideoMAE for action recognition, InternVideo2 for VQA.</p>
     </div>
-    <div class="tiles">
-      <div class="tile"><div class="big acc">−1.0<small>pt</small></div><p>Average action-recognition trade-off against the non-interpretable baseline; best interpretable method on KTH and Chiral SSv2.</p></div>
-      <div class="tile"><div class="big">+0.4<small>pt</small></div><p>Average VQA change against the baseline. TraCE is the only concept-based method that supports VQA at all.</p></div>
-      <div class="tile"><div class="big">4.2<small>/ 5</small></div><p>Coherence rating people give trajectory concepts, against 2.5 for pose-sequence and 2.2 for language concepts. <a href="#results" data-tab="us" class="tilelink">See the user study</a></p></div>
+    <div class="rsum">
+      <div class="tile feat">
+        <div class="eyebrow">User study · how well a concept matches its motion (1–5)</div>
+        <div class="cbars" role="img" aria-label="Concept coherence ratings: trajectory concepts 4.2, pose-sequence concepts 2.5, language-derived motion concepts 2.2, out of 5.">
+          <div class="cb us"><span class="nm">TraCE trajectory concepts</span><span class="tr"><i style="--v:84%"></i></span><span class="vl">4.2</span></div>
+          <div class="cb"><span class="nm">Pose-sequence concepts</span><span class="tr"><i style="--v:50%"></i></span><span class="vl">2.5</span></div>
+          <div class="cb"><span class="nm">Language-derived concepts</span><span class="tr"><i style="--v:44%"></i></span><span class="vl">2.2</span></div>
+        </div>
+        <p>In pairwise comparisons, over <b>93%</b> of responses prefer TraCE explanations to DANCE and a language-based CBM, and about <b>78%</b> prefer them to SALF&#8209;CBM. <a href="#results" data-tab="us" class="tilelink">See the user study</a></p>
+      </div>
+      <div class="acc-col">
+        <div class="tile acc2">
+          <div class="eyebrow">Action recognition · avg. top-1</div>
+          <div class="pair"><span class="nm">Baseline</span><span class="tr"><i style="--v:91.8%"></i></span><span class="vl">91.8</span></div>
+          <div class="pair us"><span class="nm">TraCE</span><span class="tr"><i style="--v:90.8%"></i></span><span class="vl">90.8</span></div>
+          <p>−1.0 pt against the non-interpretable baseline, and the highest average among interpretable methods.</p>
+        </div>
+        <div class="tile acc2">
+          <div class="eyebrow">Video QA · avg. accuracy</div>
+          <div class="pair"><span class="nm">Baseline</span><span class="tr"><i style="--v:74.0%"></i></span><span class="vl">74.0</span></div>
+          <div class="pair us"><span class="nm">TraCE</span><span class="tr"><i style="--v:74.4%"></i></span><span class="vl">74.4</span></div>
+          <p>+0.4 pt, within seed variance, and the highest average among concept-based methods.</p>
+        </div>
+      </div>
     </div>
     <div class="panel">
       <div class="tabs" role="tablist">
@@ -859,7 +906,7 @@
             </tbody>
           </table>
         </div>
-        <p class="cap">Top-1 accuracy (%), mean ± std over five seeds. Underline: best among interpretable methods. DANCE and SALF-CBM use pose-sequence and spatially-aware language concepts respectively; neither defines a VQA answer-scoring mechanism.</p>
+        <p class="cap">Top-1 accuracy (%), mean ± std over five seeds. Underline: best among interpretable methods. DANCE and SALF-CBM use pose-sequence and spatially&#8209;aware language concepts respectively; neither defines a VQA answer-scoring mechanism.</p>
       </div>
       <div class="tpane" data-t="vqa">
         <div class="twrap">
@@ -968,9 +1015,8 @@
         slides.forEach(function (s) { s.classList.toggle('on', s.dataset.k === k); });
         notes.forEach(function (n) { n.classList.toggle('on', n.dataset.for === k); });
         if (k !== 'd' && demo && !demo.paused) demo.pause();
-        // restart GIFs so the clip begins from its first frame
-        var slide = document.querySelector('.stage .slide[data-k="' + k + '"] img.clip');
-        if (slide) { var src = slide.src; slide.src = ''; slide.src = src; }
+        // restart the example clips so each begins from its first frame
+        document.querySelectorAll('.stage .slide[data-k="' + k + '"] video[loop]').forEach(function (v) { v.currentTime = 0; var p = v.play(); if (p && p.catch) p.catch(function () {}); });
       });
     });
   })();
